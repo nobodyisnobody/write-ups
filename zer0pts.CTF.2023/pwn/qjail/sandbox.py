@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-import qiling
-import sys
-
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} <ELF>")
-        sys.exit(1)
-
-    cmd = ['./lib/ld-2.31.so', '--library-path', '/lib', sys.argv[1]]
-    ql = qiling.Qiling(cmd, console=False, rootfs='.')
-    ql.run()
+version https://git-lfs.github.com/spec/v1
+oid sha256:4f3905c9e32ad81b1ee6dba29d8da322f55c416b7a01cdc737a082f36c0a4b12
+size 306

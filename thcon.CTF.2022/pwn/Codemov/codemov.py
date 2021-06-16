@@ -1,31 +1,3 @@
-#!/usr/bin/env python3
-
-from pwn import *
-
-context.arch = 'amd64'
-
-print("Enter your shellcode (80 bytes max): ")
-
-shellcode = []
-
-while True:
-    try:
-        code = input().replace(';', '').lower().strip()
-        if code == "end":
-            break
-        if not code.startswith("mov"):
-            log.failure("Invalid instruction")
-            exit()
-        shellcode.append(code)
-    except EOFError:
-        break
-
-shellcode = asm('\n'.join(shellcode))
-
-log.info('Executing shellcode')
-
-r = process('./executor', alarm=30)
-r.sendline(shellcode)
-r.wait_for_close()
-
-log.success('kthxbye')
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a4f712b0c30883241dd1c3e81a11ad2031cf7a106e0ef8bb961edca0a2045c9
+size 596
