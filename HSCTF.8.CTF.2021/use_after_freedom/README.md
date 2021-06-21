@@ -23,7 +23,7 @@ The solution was a unsorted bin attack on global_max_fast,
 where the free of the corrupted block, will overwrite __free_hook,   with libc system funtion address.
 
 
-```
+```python
 from pwn import *
 #context.terminal = ['lxterminal', '--title=GDB-Pwn', '--geometry=128x52', '-e']
 context.terminal = ['xfce4-terminal', '--title=GDB-Pwn', '--zoom=0', '--geometry=128x98+1100+0', '-e']

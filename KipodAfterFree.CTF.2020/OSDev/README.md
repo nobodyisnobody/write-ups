@@ -28,7 +28,7 @@ so I give the task, to my teammate kikko, who is good at crypto.
 Script by kikko:
 
 The cipher is basically an AES128 in which the substitute bytes step is replaced with a weird function. The whole process can be reversed to get a decipher function.
-```
+```python
 
 """
 # AES subkeys

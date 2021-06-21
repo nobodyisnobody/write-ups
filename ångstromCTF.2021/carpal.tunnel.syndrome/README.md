@@ -144,7 +144,7 @@ And Bingo !!!
 
 We Got Shell !!!
 
-```
+```python
 from pwn import *
 context.log_level = 'info'
 context.arch = 'amd64'

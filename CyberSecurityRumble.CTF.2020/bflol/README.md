@@ -24,7 +24,7 @@ then we calculate libc_base with our libc leak, then we calculate onegadget addr
 
 then, when the program returns from main...we got Shell..
 
-```
+```python
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 #

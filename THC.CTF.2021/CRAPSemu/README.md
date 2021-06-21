@@ -167,7 +167,7 @@ ok got it..
 
 then I wrote a qiling script to automatically resolve it.. (set up a correct rootfs path to run it)
 
-```
+```python
 import sys
 sys.path.append("..")
 
@@ -203,7 +203,7 @@ Well angr resolved it also..but I didn't see it...
 
 so here is the angr script to resolve it, for those interested...
 
-```
+```python
 import angr
 import claripy
 

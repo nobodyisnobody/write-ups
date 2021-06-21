@@ -26,7 +26,7 @@ The rest is classic, we do a ROP that open the file, read it, write it to stdout
 
 ![](https://imgur.com/QTjZMca.png)
 
-```
+```python
 from pwn import *
 
 context.log_level = 'info'

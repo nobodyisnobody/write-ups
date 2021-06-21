@@ -2,7 +2,7 @@
 
 Nobodyisnobody for RootMeUpBeforeYouGoGo
 
-```
+```python
 from pwn import *
 
 context.log_level = 'error'

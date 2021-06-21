@@ -97,7 +97,7 @@ We Got Shell..
 P.S.:
 *I have to launch the exploit on remote server via ssh, because it was too slow remotely..*
 
-```
+```python
 from pwn import *
 context.log_level = 'info'
 context.arch = 'amd64'

@@ -61,7 +61,7 @@ we set the value of the last bloc to one onegadget in libc , that will be writte
 then we just called free on the bloc, which will call our onegadget...and we got SHELL !
 
 
-```
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from pwn import *
