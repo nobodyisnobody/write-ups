@@ -6,7 +6,7 @@ the strategy to exploit was to use a stack pointer (reachable with the format st
 
 that points to another stack pointer.
 
-with this pointer the next stack pointer, to point on '_libc_ret_main_' return address
+with this pointer we modify the next stack pointer, to make it point to '_libc_ret_main_' return address
 
 we use this new pointer, to write a one gadget instead of the return address..
 
