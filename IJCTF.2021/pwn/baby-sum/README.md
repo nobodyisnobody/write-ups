@@ -104,7 +104,7 @@ We got shell..
 ![](https://raw.githubusercontent.com/nobodyisnobody/write-ups/main/IJCTF.2021/pwn/baby-sum/imgs/gotshell.png)
 
 
-```
+```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
