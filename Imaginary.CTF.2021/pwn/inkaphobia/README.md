@@ -20,7 +20,7 @@ then dump a libc address , and write onto ret address using pwntools format stri
 
 see in in action...
 
-![](https://raw.githubusercontent.com/nobodyisnobody/write-ups/main/Imaginary.CTF.2021/pwn/inkaphobia.gif)
+![](https://github.com/nobodyisnobody/write-ups/raw/main/Imaginary.CTF.2021/pwn/inkaphobia/pics/inkaphobia.gif)
 
 ```python
 from pwn import *
