@@ -8,7 +8,7 @@ and execute a code in this RWX part (self modifying code indeed)
 
 the code is a bloc like this
 
-![](https://github.com/nobodyisnobody/write-ups/raw/main/UIUCTF.2021/rev/signals/imgs/8v3ISGM.gif)
+![](https://github.com/nobodyisnobody/write-ups/raw/main/UIUCTF.2021/rev/signals/imgs/uvajKkR.png)
 
 it loads the next bloc address to be decoded in RAX,
 
