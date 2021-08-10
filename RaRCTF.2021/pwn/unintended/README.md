@@ -120,21 +120,19 @@ Well it does ...guess what ??  Nothing...then exits.. (which is a bit more than 
 
 ### 2. Let"s Prepare for War.
 
-First as the binary has PIE protection, we need to leak libc base address & heap base address.
+First as the binary has PIE protection on, we need to leak libc base address & heap base address.
 
-as we can choose the size of chunk allocated (at least the second one),  we can allocate data, in unsorted, or tcache, or even mmaped chunk before libc,
+as we can choose the size of the chunk allocated,  depending on the requested size, we can allocate data in unsorted bin, or tcache, or even mmaped chunk before libc,
 
-so the is a relatively easy task.
+so this is a relatively easy task.
 
-there are many ways to do it, let's first leak libc address.
+there are many ways to do it.  Let's first leak libc address.
 
-There is no Use After Free (UAF) vulnerability in show chunk function, so we need to allocate a chunk again ( of the same size) at the place we want to leak libc arena 
+There is no Use After Free (UAF) vulnerability in show chunk function, so we need to allocate a chunk again (same size) at the place we want to leak libc arena address,
 
-address put there after freeing the chunk. And as malloc does not clear the chunk allocated, we can only write one byte to the new chunk (ideally the same that the LSB of 
+and as malloc does not clear the chunk allocated, we only write one byte to the new allocated chunk (ideally the same that the LSB of 
 
-libc arena address, 0xa0 in our case) to dump the libc arena adress full.
-
-for the first leak.
+libc arena address, 0xa0 in our case) to dump the full libc arena adress.
 
 We will allocate a chunk of 0x428 bytes (chunk 'A'), it is bigger than tcache maximum chunk size, so it will be allocated in unsorted bin.
 
@@ -142,9 +140,9 @@ then we will allocate two 0x38 bytes (0x40 in tcache) chunks (named 'B' & 'C')
 
 then we will free them.  The big chunk allocated in unsorted bin, when freed, will have it's BK & FD pointers, point to main_arena in libc.
 
-with LSB of libc address always be 0xa0.. (easy to verify on gdb),  so we will allocate immediatly after freeing them,
+with LSB of libc address always be 0xa0.. (easy to verify on gdb),  so we will allocate (immediatly after freeing them),
 
-another bloc of the same size 0x428, with only a byte of 0xA0 as its data.. so that the libc main_arena address will not be overwritten.
+another bloc of the same size 0x428, with only a byte of 0xA0 as its data.. so that the libc main_arena address will not be corrupted.
 
 And we can leak it, with the "Deploy Challenge" function.
 
@@ -163,3 +161,92 @@ deploy(0)
 see the state of the heap after this operation.
 
 ![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/leak1.png)
+
+now we do the same for leaking an heap address, and calculate heap base address.
+
+We allocate a chunk of 0x38 bytes, (0x40 with medata) , so it will be allocate at the same address,
+
+and we use byte 0x80 for our LSB, (verified with gdb), to obtain a correct heap chunk address.
+
+as it's offset from the beginning of the heap is constant, we substract it with 0x780 to obtain the beginning of the heap
+
+```python
+add(1,'X', 'B', 0x38, '\x80', 1000)
+deploy(1)
+```
+
+see the state of the heap after this operation.
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/leak2.png)
+
+you can see the LSB overwritten, and our calculation..
+
+after all this, there are still two chunks previously free in tcache list as you can see at the bottom of the picture..
+
+this is the bloc 'C' with it data bloc of 0x40 also..
+
+
+### 2. Let's start the War !!!
+
+Ok, at this point, we have all we need , we know the libc base address, and we know the heap base address.
+
+This is all we need.
+
+We are gonna try to have chunks overlapping, so that by editing a chunk we will edit the metadata and data of a previously freed chunk.
+
+As there are no UAF vulnerability in edit function, it will be impossible to do it, without overlapping chunk.
+
+Basically, this is the same attack that the one explained in the VERY GOOD github of Shellphish, named "how2heap"
+
+https://github.com/shellphish/how2heap/blob/master/glibc_2.27/overlapping_chunks.c
+
+I can recommand you to read, and study all the examples in this github, this is probably one of the best source of information, for heap exploitation.
+
+One thing that complicates a bit the exploitation for us, is that when we allocate a new Challenge, two chunks are created each time.
+
+One of 0x30 bytes and another that we can choose the size.. And for the attack to succeed, it need that the two chunks are adjacent.
+
+Because we modify the size of the adjacent chunk. So if we have a 0x40 chunk in between, we cannot reach the size of the chunk that we control the content.
+
+ok...well...
+
+You remember that we have two chunks of 0x40 in tcache list, you can see them at the bottom of the previous picture.
+
+These chunks, will save our lives :)  because the two next 0x30 chunk allocation request, will be served from the tcache list...
+
+So the chunk, will be allocated at their old places, and not in between our big chunks allocation...
+
+But you will see it in GDB...
+
+of let's see the beginning ouf the attack..
+
+```python
+add(2,'web', 'A', 0x4f8, 'a'*0x4f8, 1000)
+add(3,'web', 'B', 0x4f8, 'b'*0x4f8, 1000)
+add(4,'web', 'C', 0x78, 'c'*0x78, 1000)
+free(3)
+patch(2,'A'*0x4f8+p16(0x581))
+free(4)
+payload = 'D'*0x530+p64(0)+p64(0x81)+p64(libc.symbols['__free_hook'])+p64(heap_base+0x10)
+add(3,'web', 'D', 0x578, payload, 1000)
+```
+
+we allocate two big unsorted chunk of 0x4f8 bytes (they will be 0x500 bytes with metada)
+
+followed by a tcache chunk of 0x78bytes  (0x80 in tcache)
+
+we free the unsorted chunk in the middle, this is the one that we will attack, by overflowing into is size value while editing previous chunk.
+
+we modify it's size, to 0x581, a bigger size that will overlap the tcache chunk 'C' just after...
+
+then we free the tcache bloc 'C', to be able to modify it once freed..
+
+and finally create an unsorted bloc of size 0x578 bytes (0x580 with metada).., that bloc will be allocated at the place of the 'B' chunk , that we have freed before, as the malloc system now believed that the old size (modified by us) was 0x580 also...
+
+so what we have now?
+
+we have a 0x580 bloc 'D' at index 3,  that will overlap the next chunk of 0x78 (0x80) size, that we freed before..
+
+see the state of the heap at this point
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/heap3.png)
