@@ -250,3 +250,50 @@ we have a 0x580 bloc 'D' at index 3,  that will overlap the next chunk of 0x78 (
 see the state of the heap at this point
 
 ![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/heap3.png)
+
+once we have two overlapping chunks, we will do the last part of the attack.
+
+We will do a tcache poisonning attack.
+
+if is explain in depth here:
+
+https://github.com/shellphish/how2heap/blob/master/glibc_2.27/tcache_poisoning.c
+
+it need to overwrite a already free tcache block fd pointer, with an address where we want to write,
+
+then we do two chunk allocation, and the second chunk allocated, will be allocated at our desired address...
+
+this is our payload when we create the big chunk, that overlap the tcache freed chunk.
+
+it replace tcache chunk fd pointer, by __free_hook pointer.
+
+__free_hook, is a standard hook for free function, that will be called when you free a chunk of memory instead of original free function.
+
+```python
+payload = 'D'*0x530+p64(0)+p64(0x81)+p64(libc.symbols['__free_hook'])+p64(heap_base+0x10)
+add(3,'web', 'D', 0x578, payload, 1000)
+```
+
+we overwrite the fd pointer.
+
+see the heap at this point
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/heap4.png)
+
+you can see in tcache 0x80 chunk list, that the second address to be served, will be __free_hook now.
+
+then the tcache poisonning attack
+
+```python
+add(5,'web', 'E', 0x78, '/bin/sh\x00', 1000)
+add(6,'web', 'F', 0x78, p64(libc.symbols['system']), 1000)
+```
+
+the first block will contains the data that we want to pass to the free function , when doing free(5)
+
+then the second allocation, will be at the address of free_hook, and there we will replace free function by "system" libc function.
+
+Like this, when we will do free(5), to free the 5th bloc that contains the '/bin/sh' strings..
+
+system('/bin/sh') will be executed, and at this time...we will have shell
+
