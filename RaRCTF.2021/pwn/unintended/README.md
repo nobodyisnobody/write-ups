@@ -293,7 +293,17 @@ the first block will contains the data that we want to pass to the free function
 
 then the second allocation, will be at the address of free_hook, and there we will replace free function by "system" libc function.
 
+as you can see here.. (smells good..)
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/end.png)
+
 Like this, when we will do free(5), to free the 5th bloc that contains the '/bin/sh' strings..
 
 system('/bin/sh') will be executed, and at this time...we will have shell
 
+
+of let's see it in action.. :)
+
+*nobodyisnobody still pwning things...*
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/RaRCTF.2021/pwn/unintended/pics/exploit.gif)
