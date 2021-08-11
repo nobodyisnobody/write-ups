@@ -18,9 +18,9 @@ while basically, permits to allocate a bloc, view it , delete it, and edit it...
 
 ### 1. Functional Analysis
 
-**"Create a challenge"**
+**"Make a challenge"**
 
-When we choose "Create a challenge", the program ask for a challenge number first:
+When we choose "Make a challenge", the program ask for a challenge number first:
 
 We see in the code that we can create up to 10 challenges, (0 to 9). 
 
