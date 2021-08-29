@@ -20,7 +20,7 @@ and stored in a buffer on .bss at a fixed address, we will use it to pass the fi
 
 the output of the interpreter was returned back in the web page.
 
-the interpreted has a seccomp in place, that forbid execve (no shell exec),  socket (no connect back shellcode), mprotect (no shellcode so...)
+the interpreter has a seccomp in place, that forbid execve (no shell exec),  socket (no connect back shellcode), mprotect (no shellcode so...)
 
 ![](https://github.com/nobodyisnobody/write-ups/raw/main/Fword.CTF.2021/pwn/peaky.and.the.brain/pics/seccomp.png)
 
@@ -30,7 +30,7 @@ so we can write value after the 79 bytes buffer on stack , and modify the interp
 
 and write a ROP in stack, to do a simple open/read/write ROP, that will dump the flag to stdout,
 
-the stdout output, will be return to us on the webpage..
+the stdout output, will be returned to us on the webpage..
 
 Here is the python code to do that so...
 
