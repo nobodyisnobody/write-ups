@@ -12,13 +12,13 @@ The interface looks like this. (a bit ugly I know..)
 
 The image was converted to brainfuck according to pixel color values.
 
-then the brainfuck was pass to a binary interpreter.
+then the brainfuck was passed to a binary interpreter.
 
-The text that was input in arg window on the webpage, was also pass to the interpreter,
+The text that was input in arg window on the webpage, was also passed to the interpreter,
 
-and store in a buffer on .bss at a fixed address, we will use it to pass the filename we want to read for the ROP.
+and stored in a buffer on .bss at a fixed address, we will use it to pass the filename we want to read for the ROP.
 
-the output of the interpreter was return back in the web page.
+the output of the interpreter was returned back in the web page.
 
 the interpreted has a seccomp in place, that forbid execve (no shell exec),  socket (no connect back shellcode), mprotect (no shellcode so...)
 
