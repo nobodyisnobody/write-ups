@@ -30,7 +30,9 @@ well basically it puts in place a seccomp filter.. let's dump the rules in place
 
 well execve, execveat, fork, open are forbidden, so no shell execution.
 
-so we will go for a reverse shell, and open can be replaced by the openat syscall which do the same (more or less)
+so we will go for a connect back shellcode that send us back the flag
+
+(open can be replaced by the openat syscall which do the same (more or less))
 
 let's have a look to the vuln function.
 
