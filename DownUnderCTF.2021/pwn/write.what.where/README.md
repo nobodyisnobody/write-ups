@@ -1,3 +1,34 @@
+​**"Write what were"**
+
+was a pwn challenge from DownUnderCTF 2021,
+
+an easy one, were you can write a value to an address, in oneshot.. classical problem so..
+
+let's check the protections.
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/DownUnderCTF.2021/pwn/write.what.where/pics/checksec.png)
+
+ok no PIE, GOT is writable..
+
+let's have a look to the program.
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/DownUnderCTF.2021/pwn/write.what.where/pics/reverse.png)
+
+well nothing much to say, read an address, read value, write the value to this address..
+
+the libc is given, so we know the different function offsets..
+
+we will replace atoi function two lsb bytes, by system function two lsb byte, 4 bits of ASLR will be left to guess, which is very fast...
+
+then when the replace works, the input value from 'where?', will be passed to system()
+
+let's see in action (for the pleasure of animated gif :) )
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/DownUnderCTF.2021/pwn/write.what.where/pics/gotshell.gif)
+
+and here is the exploit code.
+
+```python3
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from pwn import *
@@ -45,4 +76,8 @@ while (True):
 
 print(buff)
 p.interactive()
+
+```
+
+*nobodyisnobody still pwning things..*
 
