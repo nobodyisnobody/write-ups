@@ -2,7 +2,7 @@
 
 was a pwn challenge from Tamil CTF 2021.
 
-it is a small echo server write in assembly, very small, with no libc, very few gadgets..
+it is a small echo server written in assembly, very small, with no libc, very few gadgets..
 
 there are may ways to exploit it, let's look at the reverse
 
@@ -14,7 +14,7 @@ so my exploitation goes like this:
 
 ![](https://github.com/nobodyisnobody/write-ups/raw/main/Tamil.CTF.2021/pwn/Stress.Rope/pics/step1.png)
 
-we return to 0x40008d address, at the sub rsi,8 , to read again another bloc a bit before on stack, to put the filename of the file we want to open there (rsi will point on it). we wait for the next send so...
+we return to 0x40008d address, at the "sub rsi,8" , to read again another bloc, a bit before on stack, to put the filename of the file we want to open there (rsi will point on it). we wait for the next send so...
 
 **2nd step:**
 
@@ -36,15 +36,15 @@ then we return again to read for step3
 
 ok know that we have open the filename for the flag, we are going to put a sigrop frame on stack for the last step.
 
-We don't know the fd number returner by openfileat, but as only stdin, stdout, stderr, a socket should be open remotely..it's probably a small numer, 4, 5 or 6 ....we can guess it quickly..
+We don't know the fd number returned by openfileat, but as only stdin, stdout, stderr, a socket should be open remotely..it's probably a small numer, 4, 5 or 6 ....we can guess it quickly..
 
 the frame we prepared looks like this
 
 ![](https://github.com/nobodyisnobody/write-ups/raw/main/Tamil.CTF.2021/pwn/Stress.Rope/pics/sigrop.png)
 
-it is a call to sendfile syscall, which take a input fd, and output fd, and a length basically.
+it is a call to sendfile syscall, which take an input fd, and output fd, and a length basically.
 
-It will transfer data frome the opened fd from openfileat (the flag), to stdout (fd = 1)
+It will transfer data from the opened fd from openfileat (the flag), to stdout (fd = 1)
 
 and we will receive it...
 
