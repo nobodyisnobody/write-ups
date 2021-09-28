@@ -36,7 +36,7 @@ then we return again to read for step3
 
 ok know that we have open the filename for the flag, we are going to put a sigrop frame on stack for the last step.
 
-We don't know the fd number returned by openfileat, but as only stdin, stdout, stderr, a socket should be open remotely..it's probably a small numer, 4, 5 or 6 ....we can guess it quickly..
+We don't know the fd number returned by openfileat, but as only stdin, stdout, stderr, a socket should be open remotely..it's probably a small number, 4, 5 or 6 ....we can guess it quickly..
 
 the frame we prepared looks like this
 
