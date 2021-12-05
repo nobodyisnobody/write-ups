@@ -8,7 +8,7 @@ So the concept was to write a shellcode where every byte must be bigger then the
 
 a increasing only shellcode..more or less...
 
-The shellcode is copied to a memory zone RWX mapper at address 0x0000133713370000
+The shellcode is copied to a memory zone RWX mapped at address 0x0000133713370000
 
 first we use the fact that in the register rcx, you will get the length of shellcode less 1.
 
