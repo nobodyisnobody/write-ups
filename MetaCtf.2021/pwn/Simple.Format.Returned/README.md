@@ -14,9 +14,9 @@ We leak libc & stack address with the format string, and wait for the MSB byte o
 
 as it is not a blind format string, all the data we send , will be sent us back, so for the program not to timeout , it needs a small MSB byte in both libc & stack mapping address..
 
-this could take time ,and numerous try...
+this could take time ,and numerous tries...
 
-to see a more in deth explanation on how format string exploitation works, how to have a return to main, etc, 
+to see a more in depth explanation on how format string exploitation works, how to have a return to main, etc, 
 
 take a look at my previous write-up for another format string challenge:
 
