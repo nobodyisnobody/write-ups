@@ -56,7 +56,14 @@ then we will write 0x03 byte to return address to return at _libc_start_main+227
 
 that will call main again.. a ret2main so...
 
-as always with format string on heap, you can not access stack positions, with positional notation,
+as always with format string you can not access stack positions with positional notation, because at the moment you use positionnal notation, 
+
+the printf function will take a snapshot of the stack state, and any modifications you will made , will not be taken into account... 
+
+so you have, to progress in stack pointers position using %c to pass to next position...
+
+then when you have modified the stack as you want.. you can use positionnal position..(at the end of the format string in general)
+
 
 but you have to increase pos, one by one with '%c'..
 
