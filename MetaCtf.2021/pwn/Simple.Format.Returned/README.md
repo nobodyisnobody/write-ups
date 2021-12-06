@@ -1,8 +1,12 @@
-Simple Format Returned
-
+# Simple Format Returned
+# 
 was a pwn challenge from MetaCTF 2021.
 
 It is a format string vulnerability. A classic.
+
+you can spot the vuln here in the reverse:
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/MetaCtf.2021/pwn/Simple.Format.Returned/pics/vuln.png)
 
 The exploitation is classic also , but not easy as it needs to have a good ASLR to work.
 
