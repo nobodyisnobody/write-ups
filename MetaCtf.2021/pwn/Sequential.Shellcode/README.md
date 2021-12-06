@@ -20,13 +20,13 @@ let's see registers state when we enter the shellcode:
 
 ![](https://raw.githubusercontent.com/nobodyisnobody/write-ups/main/MetaCtf.2021/pwn/Sequential.Shellcode/pics/registers.png)
 
-you can see that we set rcx to 0x0f above.
+you can see that we set rcx to 0x0f above, and that rdx & rax registers points to the beginning of our shellcode.
 
 first we will use:
 
 `04 05       add al,5`
 
-like this we can change it to a syscall with the next instruction, that will modify the 04 opcode to 0F
+like this we can change it to a syscall with the next instruction, that will modify the 04 opcode to 0F.
 
 `  or byte ptr[rdx],cl`
 
@@ -44,7 +44,7 @@ and that's all
 
 so here is my solution:
 
-![](https://raw.githubusercontent.com/nobodyisnobody/write-ups/main/MetaCtf.2021/pwn/Sequential.Shellcode/pics/bytes.png)
+![](https://raw.githubusercontent.com/nobodyisnobody/write-ups/main/MetaCtf.2021/pwn/Sequential.Shellcode/pics/disass.png)
 
 
 ```asm
