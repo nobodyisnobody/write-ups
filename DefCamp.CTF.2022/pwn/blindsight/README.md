@@ -1,4 +1,5 @@
-**Blindsight**,
+#### **Blindsight**,
+
 
 was a pwn challenge from DefCamp 2022.
 
@@ -6,7 +7,7 @@ I got first blood on it (I played with Water Paddler).
 
 It was a classic blind remote rop, with no binaries.
 
-![](https://github.com/nobodyisnobody/write-ups/raw/main/DefCamp.CTF.2022/pwn/blindsight/pics/prog.png)
+![](https://github.com/nobodyisnobody/write-ups/raw/main/DefCamp.CTF.2022/pwn/blindsight/pics/fuzz.gif)
 
 Well, basicall we first have to find the size of the buffer overflow, if we send more than 88 bytes for input, the program will crash, and the LSB of the return address will be overwritten.
 
@@ -28,7 +29,8 @@ for i in range(256):
   p.close()
 ```
 
-Ok let's see what we get bruteforcing the LSB of the return address
+Ok let's see what we get bruteforcing the LSB of the return address,
+
 case LSB =:
 * 0x0a   --> print message 'No password for you!\n'
 * 0x0c   --> print message 'No password for you!\n'
@@ -86,7 +88,7 @@ so 6 times pop, and a ret.
 
 The second part set registers for the calling and call a function:    mov rdx, r15   /  mov rsi, r14 / mov edi, r13d / call qword[r12+rbx*8] , etc....
 
-The second part with the 6 times pop and ret, is easy to find once you know an address that return some sort of message, text.. (0x4007bb in our case..)
+The second part with the "6 times pop" and ret, is easy to find once you know an address that return some sort of message, text.. (0x4007bb in our case..)
 
 knowing that theses gadgets are at the end of the binary, we will start scanning from addresses a little after the one we found,
 
@@ -99,7 +101,7 @@ if we receive nothing, we increase the tested adress...and so on... until we fou
 
 That's the "classic way".
 
-One you know the 6 x pop gadget address,  you can deduce easily the address of the second libcsu gadget that calls the function..
+When you know the "6 x pop" gadget address,  you can deduce easily the address of the second libcsu gadget that calls the function..
 
 then with the knowledge of our 2 libcsu gadget, we will scan for a got entry of a puts, or a write, or a printf for example.. these got entries around the same addresses..
 
@@ -192,4 +194,3 @@ p.interactive()
 and that's all...
 
 *nobodyisnobody still pwning things..* (you know that little colorfull characters that move on screen...)
-
