@@ -112,6 +112,7 @@ seeing is believing...
 
 ![shell is coming..!!](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/warmup/pics/gotshell.gif)
 
-*nobodyisnobody still pwning things*  like a ghost in machine..
+*nobodyisnobody still pwning things*  (like a ghost in the machine..)
+
 
 
