@@ -17,7 +17,7 @@ first we extracted the filesystem like this:
 ```sh
 mkdir rootfs
 cd rootfs
-zcat rootfs.cpio.gz | sudo cpio -idv
+zcat ../rootfs.cpio.gz | sudo cpio -idv
 ```
 
 We use sudo in our commands, because some files are going to be created as root user in the original filesystem.
