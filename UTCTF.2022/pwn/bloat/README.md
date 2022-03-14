@@ -129,6 +129,8 @@ But it does not check if the mapping success, or return an error..
 
 And it continue the execution to the loop that copy the data from the file, to the address in the QWORD.
 
+The copy loop itself, does not use put_user() to enforce that data will be copied only to user space..and not kernel space.
+
 So if we give a kernel address that is writable, the vm_mmap() call will failed, but the data will be copied to our destination..
 
 basically, it is a "write anywhere primitive"...
