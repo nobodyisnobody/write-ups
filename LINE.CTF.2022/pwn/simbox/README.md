@@ -57,7 +57,7 @@ There is a little difficulty, that will be an helper for us...
 
 When we reach position 73, (the 73th "list=" value), we will overwrite the "pos" counter,
 
-so me must take care of the value we will write to it..
+so we must take care of the value we will write to it..
 
 it will help us , to "jump" directly to the return pointer value on stack, at position 79.
 
