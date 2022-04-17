@@ -2,9 +2,9 @@
 
 was an pwn challenge from TAMUctf 2022.
 
-It's type of challenge that is called automatic exploit generator, a mix of coding and pwning challenge.
+It's a type of challenge that is called automatic exploit generator, a mix of coding and pwning challenge.
 
-A server where we connect send us a succession of elf binaries, (as hexadecimal dump).
+A server where we connect send us a serie of elf binaries, (as hexadecimal dump).
 
 We have to quickly analyze them and exploit them. That's a classic type of challenge.
 
@@ -16,7 +16,7 @@ Let's see by how much they vary, and reverse them.
 
 In the case of this challenge the authour told us there is a print function function to call, and each time indicate us a value to put in `eax` before calling print.
 
-That's the condition to achieve for each binaries, and the will be five of them.
+That's the condition to achieve for each binaries, and there will be five of them.
 
 let's reverse somes of the provided binaries, there is the `vuln()` function:
 
