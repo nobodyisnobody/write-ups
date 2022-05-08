@@ -48,7 +48,7 @@ et remplaçont l'addresse de retour de printf() par une instruction nous permett
 
 et nous avons notre shell
 
-![gotshell](/BIGRAID/backup/work.challenges/work/mon.github/write-ups/FCSC.2022/pwn/Formatage/pics/gotshell.gif)
+![gotshell](./pics/gotshell.gif)
 
 les serveurs étant assez rapides, le bruteforce n'est pas très long..quelques minutes en général..
 
