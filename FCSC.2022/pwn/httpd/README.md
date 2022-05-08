@@ -20,11 +20,11 @@ et est décodée dans un buffer char creds[256];
 
 ce qui cause un buffer overflow..
 
-On procèdera donc au début à un bruteforce du canary, et de la valeur de l'addresse de retour afin de contourner l'ASLR.
+On procèdera donc au début à un bruteforce du canary, et de la valeur de l'adresse de retour afin de contourner l'ASLR.
 
-Une fois ce bruteforce exécuté, on connait donc l'addresse de mappage en mémoire du binaire du fils (et du parent par conséquent, car fork préserver les addresses de mapping)
+Une fois ce bruteforce exécuté, on connait donc l'addresse de mappage en mémoire du binaire du fils (et du parent par conséquent, car fork préserve les addresses de mapping)
 
-On va envoyer un ROP dans le fils qui va réécrire une format string dans la chaine stockéee dans la shared memory partagée entre le fils et le parent..et qui sera envoyé dans syslog() pour logguée l'utilisateur se connectant..
+On va envoyer un ROP dans le fils qui va réécrire une format string dans la chaine stockéee dans la shared memory partagée entre le fils et le parent..et qui sera envoyé dans syslog() pour logguer l'utilisateur se connectant..
 
 grâce à cette format string , on modifie dans la .bss le seccomp en place pour authoriser le syscall open,
 
