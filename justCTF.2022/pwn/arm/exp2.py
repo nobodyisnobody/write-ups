@@ -20,7 +20,7 @@ p = remote(host,port)
 # launch the binary before with
 # socat TCP-LISTEN:1236,nodelay,reuseaddr,fork EXEC:'./run.sh'
 #
-# run.sh contains:    qemu-aarch64 -g 1235 -L /usr/aarch64-linux-gnu/ ./EchoFrag
+# run.sh contains:    qemu-aarch64 -g 1235 -L /usr/aarch64-linux-gnu/ ./cli
 #
 # gdb running on port 1235 et socat waiting for connection on 1236
 #
