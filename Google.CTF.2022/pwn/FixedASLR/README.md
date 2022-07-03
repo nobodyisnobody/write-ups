@@ -223,7 +223,7 @@ A program that generate pseudo random numbers, from an initial state `rand_state
 
 so, two question come to my mind:
 
-+ are this little bit spitting things secure ?
++ is this little bit spitting thing secure ?
 
 + is it possible to recover initial state from a known output ?
 
@@ -347,7 +347,7 @@ we can see that from these 64bits output from the **LFSR**, sage has been able t
 
 `0xf58a663dbfabf188`
 
-that is the same as the initial state in the qiling picture above, the one returner by getrandom()
+that is the same as the initial state in the qiling picture above, the one returned by getrandom()
 
 CQFD, 
 
