@@ -81,7 +81,7 @@ Ok now, the loading of the object files is finished, the binary loader was unmap
 
 lets start gdb, and see what the memory mapping will look at this point. (the address will change each time off course):
 
-![typical_memory_mapping](/BIGRAID/backup/work.challenges/work/mon.github/write-ups/Google.CTF.2022/pwn/FixedASLR/pics/typical_memory_mapping.png)
+![typical_memory_mapping](./pics/typical_memory_mapping.png)
 
 Ok we can see the 7 first `r-x` mappings for each files in `files[]` table, each with eventually its `rw` zone for data.
 
