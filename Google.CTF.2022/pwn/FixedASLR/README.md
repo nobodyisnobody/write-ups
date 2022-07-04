@@ -221,7 +221,7 @@ What we have here? it is a 64bit **LFSR**.
 
 A program that generate pseudo random numbers, from an initial state `rand_state`
 
-so, two question come to my mind:
+so, two questions come to my mind:
 
 + is this little bit spitting thing secure ?
 
@@ -365,7 +365,7 @@ Well, now that we know how to calculate the canary from the leaked **LFSR** outp
 2. calculate the 64bits output by the **LFSR** from these mappings
 3. calculate the inital state `rand_state` of the **LFSR** with sage
 4. calculate the canary value with `rand_state`
-5. play the dump game, and loose it
+5. play the dumb game, and loose it
 6. forge a payload with the canary and some rop gadgets from known memory zone
 7. Use the buffer overflow in `get_player_name()` function to have code execution
 
