@@ -18,7 +18,7 @@ Then you have a write primitive, you can write a 64 bits value where you want.
 
 Then the program exits by returning 0.
 
-The program has a seccomp that forbids only allow us to use `open`, `read`,`write` syscalls, and that will forbid having a shell via execve..
+The program has a seccomp that only allow us to use `open`, `read`,`write` syscalls, and so, that will forbid having a shell via execve..
 
 ![seccomp](./pics/seccomp.png)
 
