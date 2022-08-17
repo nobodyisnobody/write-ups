@@ -16,7 +16,7 @@ our Water Paddler almighty Pass....
 
 
 
-Same directoriy , binaries packages from various challenges,
+binaries packages from various challenges,
 
 some write-ups will come soon , or no.. (depending on time...)
 
