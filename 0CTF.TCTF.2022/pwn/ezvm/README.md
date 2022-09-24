@@ -184,9 +184,11 @@ struct dtor_list
 
 this linked list will be parsed by `call_tls_dtors()`, one by one,  and `dtor_func func`, will be called passing it `obj` as argument,
 
-the func pointer is mangled, it is rolled left of 0x11 bits, and xored with a value stored in tls-storage just after the canary value at `fs:0x30`
+the func pointer is mangled, it is rolled left of 0x11 bits, and xored with a value stored in tls-storage just after the canary value (`stack_guard`) , a value called `pointer_guard` at `fs:0x30`, as you can see in tls-storage struct:
 
-but as we can do many write, we can erase this random value at `fs:0x30` by writing zero to it.
+![pointer_guard](./pics/pointer_guard.png)
+
+but as we can do many write, we can erase the `pointer_guard` value by writing zero to it.
 
 Like this,  our `dtor_list` function address will just need to by rolled left by 0x11 bits..
 
