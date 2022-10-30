@@ -17,6 +17,11 @@ most of the path he found were using `_wide_data` structure to achieve code exec
 
 so this challenge overwrite `_wide_data` and we have to found a another way to get code execution
 
+a quick look at the reverse:
+
+![](https://github.com/nobodyisnobody/write-ups/raw/main/Hack.lu.CTF.2022/pwn/byor/pics/reverse.png)
+
+
 working with teammate VoidMercy, and UDP, we found a path via `_IO_wfile_underflow`
 
 and here is the solution to this task..
