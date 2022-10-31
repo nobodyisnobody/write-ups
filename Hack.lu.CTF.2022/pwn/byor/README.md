@@ -15,7 +15,7 @@ I recommend to read his blog --> [https://blog.kylebot.net/2022/10/22/angry-FSRO
 
 and also the roderick write-ups `house of apple` 1,2 and 3 are great explanation of the attacks and the path taken (too bad I find them after the ctf only...)
 
-![https://www-roderickchan-cn.translate.goog/post/house-of-apple](https://www-roderickchan-cn.translate.goog/post/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-3/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=fr)
+[https://www-roderickchan-cn.translate.goog/post/house-of-apple](https://www-roderickchan-cn.translate.goog/post/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-3/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=fr)
 
 most of the path he found were using `_wide_data` structure to achieve code execution.
 
