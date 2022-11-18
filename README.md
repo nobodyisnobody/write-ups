@@ -42,6 +42,12 @@ Let's try, to find order in chaos...
     * *we set tcache.count in tcache_perthread_struct to 7 , to make a chunk goes to unsorted, to have a libc address leak*
     * *we edit tcache_entry of bloc of size 0x20 to __free_hook*
 
+  ### libc 2.27
+  - **RaR CTF 2021** --> unintended
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/RaRCTF.2021/pwn/unintended]()
+    * *heap overflow because of strlen usage, then make overlapping chunk & tcache poisonning*
+    * *finally overwrite __free_hook*
+ 
   ### libc 2.25
   - **Tamil CTF 2021*** --> Vuln Storage
     * [https://github.com/nobodyisnobody/write-ups/blob/main/Tamil.CTF.2021/pwn/Vuln.Storage/]()
@@ -81,6 +87,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Tamil.CTF.2021/pwn/Stress.Rope]()
     * * small echo server in assembly, very few gadgets --> ROP & sigrop*
 
+  - **PBjar CTF 2021** --> Imdeghost
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/PBjar.CTF.2021/pwn/Imdeghost]()
+    * *restricted shellcode, resolved via connect back shellcode done in sigrop*
+    
 </details>
 
 <details>
@@ -99,6 +109,15 @@ Let's try, to find order in chaos...
   - **Redpwn CTF 2021** --> gelcode-2
     * [https://github.com/nobodyisnobody/write-ups/tree/main/RedpwnCTF.2021/pwn/gelcode-2]()
     * *shellcode with only opcodes from 0 to 5, and a seccomp that force open/read/write shellcode*
+
+</details>
+
+<details>
+  <summary><strong>Format string challenges</strong></summary>
+
+  - **PBjar CTF 2021** --> wallstreet32
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/PBjar.CTF.2021/pwn/Wallstreet32]()
+    * *restricted format string with many format chars forbidden, use trick '%*\n' to get a leak (libc-2.31 based)*
 
 </details>
 
