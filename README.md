@@ -57,6 +57,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/RaRCTF.2021/pwn/unintended]()
     * *heap overflow because of strlen usage, then make overlapping chunk & tcache poisonning*
     * *finally overwrite __free_hook*
+
+  - **IJCTF 2021** --> ezpez
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/IJCTF.2021/pwn/ezpez]()
+    * *double free on tcache_head to have allocation in unsorted, leak libc, double free on stdin to modify filedescriptor and leak flag*
  
   ### libc 2.25
   - **Tamil CTF 2021*** --> Vuln Storage
@@ -95,7 +99,7 @@ Let's try, to find order in chaos...
 
   - **Tamil CTF 2021** --> Stress Rope
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Tamil.CTF.2021/pwn/Stress.Rope]()
-    * * small echo server in assembly, very few gadgets --> ROP & sigrop*
+    * *small echo server in assembly, very few gadgets --> ROP & sigrop*
 
   - **PBjar CTF 2021** --> Imdeghost
     * [https://github.com/nobodyisnobody/write-ups/tree/main/PBjar.CTF.2021/pwn/Imdeghost]()
@@ -111,6 +115,11 @@ Let's try, to find order in chaos...
     * *libc-2.31 based fsop exploitation, _wide_data is NULL and non reachable, we populate pointers first*
     * *then leak libc & random value at fs:0x30, we forge onegagdet mangled address and have code execution via _cookie_write*
 
+  - **Hack.lu CTF 2022** --> byor
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Hack.lu.CTF.2022/pwn/byor]()
+    * *libc-2.35 based fsop exploitation, _wide_data points on NULL chunk, we can overwrite stdout*
+    * *code execution via _IO_wfile_underflow , we execute system('/bin/sh'),  new standard for FSOP*
+    
 </details>
 
 <details>
@@ -124,6 +133,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Sequential.Shellcode]()
     * *shellcode where every byte must be bigger then the preceding one*
 
+  - **Maple CTF 2022** --> EBCSIC
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MapleCTF.2022/pwn/EBCSIC]()
+    * *shellcode alphanumeric but restricted to cp037 charset*
+
 </details>
 
 <details>
@@ -132,6 +145,22 @@ Let's try, to find order in chaos...
   - **PBjar CTF 2021** --> wallstreet32
     * [https://github.com/nobodyisnobody/write-ups/tree/main/PBjar.CTF.2021/pwn/Wallstreet32]()
     * *restricted format string with many format chars forbidden, use trick '%*\n' to get a leak (libc-2.31 based)*
+
+  - **MetaCTF 2021** --> Simple Format Returned
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Simple.Format.Returned]()
+    * *well classical format string, need bruteforce*
+
+  - **Maple CTF 2022** --> printf
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MapleCTF.2022/pwn/printf]()
+    * *well classical format string, need bruteforce*
+
+  - **Imaginary CTF 2021** --> inkaphobia
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Imaginary.CTF.2021/pwn/inkaphobia]()
+    * *well classical format string, need bruteforce*
+
+  - **IJCTF 2021** --> baby sum
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/IJCTF.2021/pwn/baby-sum]()
+    * *simple format string*
 
 </details>
 
@@ -142,6 +171,31 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/A.Attempt.Was.Made]()
     * *restricted rop, execve forbidden, few gadgets (no libcsu_init gadget), use only add_gadget to forge gadgets*
 
+  - **Hayyim CTF 2021** --> warmup
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Hayyim.CTF.2022/pwn/warmup]()
+    * *simple rop challenge*
+
+  - **Hayyim CTF 2021** --> cooldown
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Hayyim.CTF.2022/pwn/cooldown]()
+    * *more restricted rop challenge*
+
 </details>
 
+<details>
+  <summary><strong>ARM based challenges</strong></summary>
+
+  - **LINE CTF 2022** --> simbox
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/LINE.CTF.2022/pwn/simbox]()
+    * *ARM challenge based on gnu simulator 11.2 (with custom patch), we rop it, and dump flag*
+
+</details>
+
+<details>
+  <summary><strong>Automatic exploit generation challenges</strong></summary>
+
+  - **Imaginary CTF 2021** --> speedrun
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Imaginary.CTF.2021/pwn/speedrun]()
+    * *automatic generated exploit, gets buffer overflow type*
+
+</details>
 
