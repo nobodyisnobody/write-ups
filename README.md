@@ -10,12 +10,13 @@ or alone to practice..(Team --> Armitage)
   ### libc 2.35
 
   - **0CTF TCTF 2022** --> babyheap
-    > [https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/babyheap]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/babyheap]()
+    * *seccomp in place, heap overflow due to type confusion,  do chunk overlap for leak, then two tcache poisonning attacks*
+    * *code execution via forging dtor_list table in tls-storage, and erasing the random value at fs:0x30*
+  - 
+    * Baz
+    * Qux
 
-  - Bar
-     * Baz
-     * Qux
-
-  ### libc 2.35
+  ### libc 2.31
 
 </details>
