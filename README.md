@@ -4,6 +4,11 @@ as a Pwner for various team (Water Paddler, RootMeUpBeforeYouGoGo, etc...)
 
 or alone to practice..(Team --> Armitage)
 
+
+**Chaos, at a higher level, some see order in it...**
+
+Let's try, to find order in chaos...
+
 <details>
   <summary><strong>Heap Challenges</strong></summary>
 
@@ -18,5 +23,15 @@ or alone to practice..(Team --> Armitage)
     * Qux
 
   ### libc 2.31
+  - **justCTF 2022*** --> notes
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/notes]()
+    * *fastbin dup attack, then write to __free_hook*
+
+  ### libc 2.32
+
+  - **vsCTF 2022** --> EZorange
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/vsCTF.2022/pwn/ezorange]()
+    * *oob read/write in edit function, no free available, use same method than house of orange to free chunks*
+    * *we free two chunks, then do tcache poisonning with the oob, and overwrite __malloc_hook*
 
 </details>
