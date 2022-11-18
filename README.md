@@ -21,6 +21,14 @@ Let's try, to find order in chaos...
     * *seccomp in place, heap overflow due to type confusion,  do chunk overlap for leak, then two tcache poisonning attacks*
     * *code execution via forging dtor_list table in tls-storage, and erasing the random value at fs:0x30*
 
+  ### libc 2.34
+
+  - **MetaCTF 2021** --> hookless
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Hookless]()
+    * *double free in delete function,uaf in edit function (usable once),uaf in display() function too*
+    * *House of Botcake attack, we overwrite IO_2_1_stdout with environ address to leak stack address*
+    * *we write a ROP directly on stack to achieve code execution*
+
   ### libc 2.32
 
   - **vsCTF 2022** --> EZorange
@@ -112,6 +120,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/RedpwnCTF.2021/pwn/gelcode-2]()
     * *shellcode with only opcodes from 0 to 5, and a seccomp that force open/read/write shellcode*
 
+  - **MetaCTF 2021** --> sequential shellcode
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Sequential.Shellcode]()
+    * *shellcode where every byte must be bigger then the preceding one*
+
 </details>
 
 <details>
@@ -122,4 +134,14 @@ Let's try, to find order in chaos...
     * *restricted format string with many format chars forbidden, use trick '%*\n' to get a leak (libc-2.31 based)*
 
 </details>
+
+<details>
+  <summary><strong>Various ROP challenges</strong></summary>
+
+  - **MetaCTF 2021** --> An Attempt Was Made
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/A.Attempt.Was.Made]()
+    * *restricted rop, execve forbidden, few gadgets (no libcsu_init gadget), use only add_gadget to forge gadgets*
+
+</details>
+
 
