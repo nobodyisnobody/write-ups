@@ -179,6 +179,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Aero.CTF.2021/Shell.Master.2]()
     * *run and execute 16byte alphanumeric shellcodes*
 
+  - **idek CTF 2021** --> Guardians of the Galaxy
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/idekCTF.2021/pwn/Guardians.of.the.Galaxy]()
+    * *shellcode that finds an previously left opened filedescriptor to escape chroot*
+
 </details>
 
 <details>
@@ -243,14 +247,26 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/DefCamp.CTF.2022/pwn/blindsight]()
     * *blind remote ROP with no binaries given*
 
+  - **TamuCTF 2022** --> Rop Golf
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/TamuCTF.2022/pwn/Rop.Golf]()
+    * *restricted ROP with few gadgets*
+
 </details>
 
 <details>
-  <summary><strong>ARM based challenges</strong></summary>
+  <summary><strong>other architecture based challenges (arm,mips,riscv,etc...)</strong></summary>
 
-  - **LINE CTF 2022** --> simbox
+  - **LINE CTF 2022** --> simbox   (arm)
     * [https://github.com/nobodyisnobody/write-ups/tree/main/LINE.CTF.2022/pwn/simbox]()
     * *ARM challenge based on gnu simulator 11.2 (with custom patch), we rop it, and dump flag*
+
+  - **JustCTF 2022** --> arm        (aarch64)
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/arm]()
+    * *simple aarch64 exploitation challenge*
+
+  - **HackIM CTF 2022** --> Typical ROP    (riscv)
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/nullcon.HackIM.2022/pwn/typical.ROP]()
+    * *simple riscv gets buffer overflow exploitation challenge*
 
 </details>
 
@@ -260,6 +276,10 @@ Let's try, to find order in chaos...
   - **Imaginary CTF 2021** --> speedrun
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Imaginary.CTF.2021/pwn/speedrun]()
     * *automatic generated exploit, gets buffer overflow type*
+
+  - **TamuCTF 2022** --> Quick Mafs
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/TamuCTF.2022/pwn/Quick.Mafs]()
+    * *5 automatic generated exploits to exploit *
 
 </details>
 
