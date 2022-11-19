@@ -43,7 +43,7 @@ Let's try, to find order in chaos...
 
   ### libc 2.31
 
-  - **justCTF 2022*** --> notes
+  - **justCTF 2022** --> notes
     * [https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/notes]()
     * *fastbin dup attack, then write to __free_hook*
 
@@ -52,21 +52,21 @@ Let's try, to find order in chaos...
     * *malloca alloc chunk on stack depending on size,we forge a fake chunk on stack, do a house of spirit attack on it*
     * *then alloc a chunk on stack with our ROP that overwrite return address*
 
-  - **Tamil CTF 2021*** --> University
+  - **Tamil CTF 2021** --> University
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Tamil.CTF.2021/pwn/University.Pwn]()
     * *overflow in edit because of strlen on a non-zero terminated string, will give us a read/write primitive*
     * *we set tcache.count in tcache_perthread_struct to 7 , to make a chunk goes to unsorted, to have a libc address leak*
     * *we edit tcache_entry of bloc of size 0x20 to __free_hook*
 
-  - **HSCTF 8 CTF 2021*** --> House of sice
+  - **HSCTF 8 CTF 2021** --> House of sice
     * [https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/House.of.Sice]()
     * *double free vulnerability, using fastbin dup attack, then allocation on __free_hook*
 
-  - **DownUnder CTF 2021*** --> DUCTF Note
+  - **DownUnder CTF 2021** --> DUCTF Note
     * [https://github.com/nobodyisnobody/write-ups/tree/main/DownUnderCTF.2021/pwn/DUCTFnote]()
     * *int8 overflow in edit function, then write in tcache metadata, then allocation on __free_hook*
 
-  - **DigitalOverdose CTF 2021*** --> flavor
+  - **DigitalOverdose CTF 2021** --> flavor
     * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor]()
     * *double free vulnerability and uaf, then allocation on __free_hook*
 
@@ -88,7 +88,7 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/IJCTF.2021/pwn/ezpez]()
     * *double free on tcache_head to have allocation in unsorted, leak libc, double free on stdin to modify filedescriptor and leak flag*
 
-  - **HSCTF 8 CTF 2021*** --> Use after freedom
+  - **HSCTF 8 CTF 2021** --> Use after freedom
     * [https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/use_after_freedom]()
     * *unsorted bin attack, overwrite global_max_fast, then overwrite __free_hook*
  
@@ -212,7 +212,7 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/Formatage]()
     * *well classical format string, need bruteforce*
 
-  - **DigitalOverdose CTF 2021*** --> uncurved
+  - **DigitalOverdose CTF 2021** --> uncurved
     * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/uncurved]()
     * *format string on heap with seccond that forbid execve, and bit a of bruteforce*
 
