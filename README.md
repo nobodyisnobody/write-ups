@@ -17,19 +17,19 @@ Let's try, to find order in chaos...
   ### libc 2.35
 
   - **0CTF TCTF 2022** --> babyheap
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/babyheap](https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/babyheap)
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/babyheap)
     * *seccomp in place, heap overflow due to type confusion,  do chunk overlap for leak, then two tcache poisonning attacks*
     * *code execution via forging dtor_list table in tls-storage, and erasing the random value at fs:0x30*
 
   - **DiceCTF HOPE 2022** --> catastrophe
-    * [](https://github.com/nobodyisnobody/write-ups/tree/main/DiceCTF%40HOPE.2022/pwn/catastrophe)
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DiceCTF%40HOPE.2022/pwn/catastrophe](https://github.com/nobodyisnobody/write-ups/tree/main/DiceCTF%40HOPE.2022/pwn/catastrophe)
     * *double free in fastbin, then overwrite libc strlen got entry with system() address*
     * *code execution when calling puts() function (that calls strlen...)*
 
   ### libc 2.34
 
   - **MetaCTF 2021** --> hookless
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Hookless]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Hookless](https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Hookless)
     * *double free in delete function,uaf in edit function (usable once),uaf in display() function too*
     * *House of Botcake attack, we overwrite IO_2_1_stdout with environ address to leak stack address*
     * *we write a ROP directly on stack to achieve code execution*
@@ -37,43 +37,43 @@ Let's try, to find order in chaos...
   ### libc 2.32
 
   - **vsCTF 2022** --> EZorange
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/vsCTF.2022/pwn/ezorange]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/vsCTF.2022/pwn/ezorange](https://github.com/nobodyisnobody/write-ups/tree/main/vsCTF.2022/pwn/ezorange)
     * *oob read/write in edit function, no free available, use same method than house of orange to free chunks*
     * *we free two chunks, then do tcache poisonning with the oob, and overwrite __malloc_hook*
 
   ### libc 2.31
 
   - **justCTF 2022** --> notes
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/notes]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/notes](https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/notes)
     * *fastbin dup attack, then write to __free_hook*
 
   - **idek CTF 2021** --> stacknotes
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/idekCTF.2021/pwn/stacknotes]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/idekCTF.2021/pwn/stacknotes](https://github.com/nobodyisnobody/write-ups/tree/main/idekCTF.2021/pwn/stacknotes)
     * *malloca alloc chunk on stack depending on size,we forge a fake chunk on stack, do a house of spirit attack on it*
     * *then alloc a chunk on stack with our ROP that overwrite return address*
 
   - **Tamil CTF 2021** --> University
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/Tamil.CTF.2021/pwn/University.Pwn]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Tamil.CTF.2021/pwn/University.Pwn](https://github.com/nobodyisnobody/write-ups/tree/main/Tamil.CTF.2021/pwn/University.Pwn)
     * *overflow in edit because of strlen on a non-zero terminated string, will give us a read/write primitive*
     * *we set tcache.count in tcache_perthread_struct to 7 , to make a chunk goes to unsorted, to have a libc address leak*
     * *we edit tcache_entry of bloc of size 0x20 to __free_hook*
 
   - **HSCTF 8 CTF 2021** --> House of sice
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/House.of.Sice]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/House.of.Sice](https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/House.of.Sice)
     * *double free vulnerability, using fastbin dup attack, then allocation on __free_hook*
 
   - **DownUnder CTF 2021** --> DUCTF Note
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/DownUnderCTF.2021/pwn/DUCTFnote]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DownUnderCTF.2021/pwn/DUCTFnote](https://github.com/nobodyisnobody/write-ups/tree/main/DownUnderCTF.2021/pwn/DUCTFnote)
     * *int8 overflow in edit function, then write in tcache metadata, then allocation on __free_hook*
 
   - **DigitalOverdose CTF 2021** --> flavor
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor](https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor)
     * *double free vulnerability and uaf, then allocation on __free_hook*
 
   ### libc 2.29
 
   - **GDG Algiers CTF 2022** --> Notes Keeper
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/GDG.Algiers.CTF.2022/pwn/Notes.keeper]()
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/GDG.Algiers.CTF.2022/pwn/Notes.keeper](https://github.com/nobodyisnobody/write-ups/tree/main/GDG.Algiers.CTF.2022/pwn/Notes.keeper)
     * *use null byte overflow to make 0x118 chunk goes to tcache 0x20 size when freed*
     * *the do fastbin dup attack, to finally overwrite __free_hook*
     
