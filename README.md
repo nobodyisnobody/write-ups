@@ -22,7 +22,7 @@ Let's try, to find order in chaos...
     * *code execution via forging dtor_list table in tls-storage, and erasing the random value at fs:0x30*
 
   - **DiceCTF HOPE 2022** --> catastrophe
-    * [https://github.com/nobodyisnobody/write-ups/tree/main/DiceCTF%40HOPE.2022/pwn/catastrophe]()
+    * [](https://github.com/nobodyisnobody/write-ups/tree/main/DiceCTF%40HOPE.2022/pwn/catastrophe)
     * *double free in fastbin, then overwrite libc strlen got entry with system() address*
     * *code execution when calling puts() function (that calls strlen...)*
 
