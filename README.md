@@ -21,6 +21,11 @@ Let's try, to find order in chaos...
     * *seccomp in place, heap overflow due to type confusion,  do chunk overlap for leak, then two tcache poisonning attacks*
     * *code execution via forging dtor_list table in tls-storage, and erasing the random value at fs:0x30*
 
+  - **DiceCTF HOPE 2022** --> catastrophe
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DiceCTF%40HOPE.2022/pwn/catastrophe]()
+    * *double free in fastbin, then overwrite libc strlen got entry with system() address*
+    * *code execution when calling puts() function (that calls strlen...)*
+
   ### libc 2.34
 
   - **MetaCTF 2021** --> hookless
@@ -56,6 +61,14 @@ Let's try, to find order in chaos...
   - **HSCTF 8 CTF 2021*** --> House of sice
     * [https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/House.of.Sice]()
     * *double free vulnerability, using fastbin dup attack, then allocation on __free_hook*
+
+  - **DownUnder CTF 2021*** --> DUCTF Note
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DownUnderCTF.2021/pwn/DUCTFnote]()
+    * *int8 overflow in edit function, then write in tcache metadata, then allocation on __free_hook*
+
+  - **DigitalOverdose CTF 2021*** --> flavor
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor]()
+    * *double free vulnerability and uaf, then allocation on __free_hook*
 
   ### libc 2.29
 
@@ -191,6 +204,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/Formatage]()
     * *well classical format string, need bruteforce*
 
+  - **DigitalOverdose CTF 2021*** --> uncurved
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/uncurved]()
+    * *format string on heap with seccond that forbid execve, and bit a of bruteforce*
+
 </details>
 
 <details>
@@ -211,6 +228,10 @@ Let's try, to find order in chaos...
   - **Fword CTF 2021** --> blacklist revenge
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Fword.CTF.2021/pwn/blacklist.revenge]()
     * *seccomp in place to forbid execve, no stdout/stderr output, so a mix of ROP+connect back shellcode*
+
+  - **DefCamp CTF 2022** --> blindsight
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/DefCamp.CTF.2022/pwn/blindsight]()
+    * *blind remote ROP with no binaries given*
 
 </details>
 
@@ -239,7 +260,17 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/Fword.CTF.2021/pwn/peaky.and.the.brain]()
     * *funny challenge, web application written in python, convert an image to brainfuck language, then execute brainfuck code*
     * *oob write on stack in brainfuck interpreter, seccomp in place forbid execve, so open/read/write shellcode translated in brainfuck*
-    
+
+  - **CyberSecurityRumble CTF 2022** --> riscv-jit
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/CyberSecurityRumble.CTF.2022/pwn/riscv-jit]()
+    * *escape from a riscv bson parser inside a riscv jit interpreter to a riscv shellcode,*
+    * *then escape from a riscv just in time interpreter via a oob write in rwx zone, and execute x86 shellcode*
+
+  - **CyberSecurityRumble CTF 2020** --> bflol
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/CyberSecurityRumble.CTF.2020/bflol]()
+    * *oob read/write in a brainfuck interpreter , we dump our leaks on stack*
+    * *then overwrite return address with a onegadget*
+
 </details>
 
 <details>
@@ -258,6 +289,15 @@ Let's try, to find order in chaos...
   - **FCSC 2022** --> deflation
     * [https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/Deflation]()
     * *buffer overflow when decompressing zlib compressed data, then restricted ROP*
+
+  - **Balsn CTF 2022** --> Asian Parents
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2022/pwn/Asian.Parents]()
+    * *interesting challenge where a parent process trace a child process to filter his syscalls via ptrace*
+
+  - **Balsn CTF 2021** --> orxw
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2021/pwn/orxw]()
+    * *interesting challenge where a parent can only write, and a child process can only open and read*
+    * *stdin,stdout,stderr are closed, so we use time to extract flag content by testing each char, and blocking when right guess*
 
 </details>
 
