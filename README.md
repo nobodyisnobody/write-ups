@@ -175,6 +175,10 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/Palindrome]()
     * *need to write a palindrome shellcode, that can be read and executed in two direction*
 
+  - **Aero CTF 2021** --> Shell Master 2
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/Aero.CTF.2021/Shell.Master.2]()
+    * *run and execute 16byte alphanumeric shellcodes*
+
 </details>
 
 <details>
@@ -207,6 +211,12 @@ Let's try, to find order in chaos...
   - **DigitalOverdose CTF 2021*** --> uncurved
     * [https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/uncurved]()
     * *format string on heap with seccond that forbid execve, and bit a of bruteforce*
+
+  - **Asis CTF Quals 2022*** --> Baby Scan II
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/ASIS.CTF.Quals.2022/pwn/Baby.scan.II]()
+    * *abuse format string in snprintf to have a write anywhere primitive*
+    * *then overwrite exit got entry with _start, then overwrite atoi with printf for leaks*
+    * *then overwrite atoi() with system() for code execution*/
 
 </details>
 
@@ -270,6 +280,16 @@ Let's try, to find order in chaos...
     * [https://github.com/nobodyisnobody/write-ups/tree/main/CyberSecurityRumble.CTF.2020/bflol]()
     * *oob read/write in a brainfuck interpreter , we dump our leaks on stack*
     * *then overwrite return address with a onegadget*
+
+  - **404 CTF 2022** --> Changement d'architecture II
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/ASIS.CTF.Quals.2022/pwn/Baby.scan.II]()
+    * *a sort of arm lite vm, oob read/write in registers access, that permit overwrite FILE structure*
+    * *then we get code execution via FSOP*
+
+  - **0CTF TCTF 2022** --> ezvm
+    * [https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/ezvm]()
+    * *escape a stack machine type of vm, via an oob write, we leak an address on heap via program logic trick*
+    * *then we get execution on exit, by forging a dtors_table in tls-storage and erasing random val at fs:0x30*
 
 </details>
 
