@@ -44,7 +44,7 @@ we can only load cards two times, so we can only write two really controlled val
 
 When playing the game, a string "Basic Troll" or "Basic Land" is printed, via pointers to this strings..
 
-Luckily for us, one of this pointer if reachable with our oob write on stack , the "Basic Land" sring pointer.
+Luckily for us, one of this pointer is reachable with our oob write on stack , the "Basic Land" string pointer.
 
 So we will overwrite this pointer, with the `puts()` function GOT address
 
@@ -52,9 +52,9 @@ Then we play a game , and when the game will try to print "Basic Land", it will 
 
 with this leak we will calculate libc base address.
 
-The with our second oob write, we overwrite `main()` return address, with a onegadget..
+Then with our second oob write, we overwrite `main()` return address with a onegadget..
 
-And we we will exit, we will have a shell...
+And when we will exit, we will have a shell...
 
 and that's All..
 
