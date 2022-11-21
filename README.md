@@ -12,9 +12,14 @@ nobodyisnobody still hacking....
 
 ---
 ### Write-ups INDEX
+
 Various Write-ups from various CTFs..
+
 as a Pwner for various team (Water Paddler, RootMeUpBeforeYouGoGo, etc...)
+
 or alone to practice..(Team --> Armitage)
+
+this index is not exhaustive, it's mostly challenges that have a write-up (there are more challenges in write-ups/ directory)
 
 <details>
   <summary><strong>Heap Challenges</strong></summary>
@@ -229,7 +234,7 @@ or alone to practice..(Team --> Armitage)
 </details>
 
 <details>
-  <summary><strong>Various ROP challenges</strong></summary>
+  <summary><strong>Various ROP challenges (or Buffer overflow style)</strong></summary>
 
   - **MetaCTF 2021** --> An Attempt Was Made
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/A.Attempt.Was.Made)
@@ -254,6 +259,10 @@ or alone to practice..(Team --> Armitage)
   - **TamuCTF 2022** --> Rop Golf
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/TamuCTF.2022/pwn/Rop.Golf)
     * *restricted ROP with few gadgets*
+
+  - **SunshineCTF 2022** --> [RII] Magic the GatheRIIng
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/SunshineCTF.2022/pwn/Magic.the.GatheRIIng/)
+    * *oob write on stack, leak, then onegadget..*
 
 </details>
 
