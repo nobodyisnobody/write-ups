@@ -6,9 +6,9 @@ from a long-time hacker, who started in the eighties,
 
 hacking hardware, low-level stuff, with a preference for binary exploitation.
 
-You can contact me on discord --> nobodyisnobody#5709
+📫 You can contact me on discord --> nobodyisnobody#5709
 
-nobodyisnobody still hacking....
+*nobodyisnobody still hacking....*
 
 ---
 ### Write-ups INDEX
@@ -142,7 +142,7 @@ this index is not exhaustive, it's mostly challenges that have a write-up (there
 
   - **PBjar CTF 2021** --> Imdeghost
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/PBjar.CTF.2021/pwn/Imdeghost)
-    * *restricted shellcode, resolved via connect back shellcode done in sigrop*
+    * *restricted shellcode, resolved via connect back flag exfiltration done in sigrop*
     
 </details>
 
@@ -354,18 +354,3 @@ this index is not exhaustive, it's mostly challenges that have a write-up (there
 
 </details>
 
-
-<!--
-**nobodyisnobody/nobodyisnobody** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
