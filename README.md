@@ -179,6 +179,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/idekCTF.2021/pwn/Guardians.of.the.Galaxy)
     > *shellcode that finds an previously left opened filedescriptor to escape chroot*<br>
 
+  - **KITCTFCTF 2022** --> movsh
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/KITCTFCTF.2022/pwn/movsh)
+    > *shellcode composed only of mov and 2 syscalls only, with seccomp that only allow open,read,write,exit syscalls*<br>
+
 </details>
 
 <details>
