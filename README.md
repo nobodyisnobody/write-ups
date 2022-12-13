@@ -315,6 +315,12 @@ or alone to practice..(Team --> Armitage)
     > *escape a stack machine type of vm, via an oob write, we leak an address on heap via program logic trick*<br>
     > *then we get execution on exit, by forging a dtors_table in tls-storage and erasing random val at fs:0x30*<br>
 
+  - **RCTF 2022** --> bfc
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/RCTF.2022/pwn/bfc)
+    > *escape a brainfuck recompiler, via an oob read/write underflow on heap, then do heap exploitation via brainfuck (crazy)*<br>
+    > *then we get code execution by overwriting libc GOT entries of strlen and memcpy, and causing a malloc error*<br>
+    > *the malloc error will launch __libc_message() function that will call strlen and memcpy*<br>
+
 </details>
 
 <details>
