@@ -133,13 +133,13 @@ so, the x86 code is very straight forward.
 
 It uses a structure stored in .bss section, that looks like this:
 
->    0x0  --> data memory chunk address
->    0x8  --> data memory chunk size
->    0x10 --> actual brainfuck ptr value
->    0x18 --> --x mapped memory chunk containing instructions functions
->    0x20 --> pointer to malloc() function
->    0x28 --> pointer to free() function
->    0x30 --> pointer to memcpy() function
+>    0x0  --> data memory chunk address<br>
+>    0x8  --> data memory chunk size<br>
+>    0x10 --> actual brainfuck ptr value<br>
+>    0x18 --> --x mapped memory chunk containing instructions functions<br>
+>    0x20 --> pointer to malloc() function<br>
+>    0x28 --> pointer to free() function<br>
+>    0x30 --> pointer to memcpy() function<br>
 
 it stores the actual data pointer chunk address and size, the brainfuck ptr position
 
