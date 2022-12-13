@@ -1,4 +1,4 @@
-# btc
+# bfc
 
 was a pwn challenge from RCTF 2022.
 
