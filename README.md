@@ -324,6 +324,20 @@ or alone to practice..(Team --> Armitage)
 </details>
 
 <details>
+  <summary><strong>PTRACE related challenges</strong></summary>
+
+  - **Balsn CTF 2022** --> Asian Parents
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2022/pwn/Asian.Parents)
+    > *interesting challenge where a parent process trace a child process to filter his syscalls via ptrace*<br>
+
+  - **NahamCon EU CTF 2022** --> Limited resources
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/NahamCon.EU.CTF.2022/pwn/limited_resources)
+    > * challenge where a parent process trace a child process to modify his code via PTRACE_POKEDATA*<br>
+    > * and like this escape of the restricted seccomp to dump the flag via child*<br>
+
+</details>
+
+<details>
   <summary><strong>Uncategorized challenges (but worth reading)</strong></summary>
 
   - **Google CTF Quals 2022** --> FixedASLR
@@ -339,10 +353,6 @@ or alone to practice..(Team --> Armitage)
   - **FCSC 2022** --> deflation
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/Deflation)
     > *buffer overflow when decompressing zlib compressed data, then restricted ROP*<br>
-
-  - **Balsn CTF 2022** --> Asian Parents
-    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2022/pwn/Asian.Parents)
-    > *interesting challenge where a parent process trace a child process to filter his syscalls via ptrace*<br>
 
   - **Balsn CTF 2021** --> orxw
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2021/pwn/orxw)
