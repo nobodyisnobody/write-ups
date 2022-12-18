@@ -80,6 +80,16 @@ I added a patched binary `limited_resources_patched` in my github for the local 
 
 ![](./pics/gotflag.gif)
 
+### alternative exploitation ideas
+
+I first started by editing a GOT entry from child's used functions (and it could work too), but in fact with PTRACE_POKEDATA you can also write in Read-Only memory zone.. so finally I just patched the code, it was quicker<br>
+
+for example, you could replace a GOT entry from `strncmp` or `sleep` , one of the functions used by child, by a onegadget for example..<br>
+
+or even simpler you can write your shellcode directly after the sleep() calls in child, and it will be executed straight forward...<br>
+
+many ways to exploit it so...<br>
+
 ### exploit
 
 ```python
