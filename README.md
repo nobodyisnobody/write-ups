@@ -328,12 +328,22 @@ or alone to practice..(Team --> Armitage)
 
   - **Balsn CTF 2022** --> Asian Parents
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2022/pwn/Asian.Parents)
-    > *interesting challenge where a parent process trace a child process to filter his syscalls via ptrace*<br>
+    > *interesting challenge where a parent process trace a child process to filter his syscalls via `ptrace`*<br>
 
   - **NahamCon EU CTF 2022** --> Limited resources
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/NahamCon.EU.CTF.2022/pwn/limited_resources)
-    > * challenge where a parent process trace a child process to modify his code via PTRACE_POKEDATA*<br>
-    > * and like this escape of the restricted seccomp to dump the flag via child*<br>
+    > *challenge where a parent process trace a child process to modify his code via `PTRACE_POKEDATA`*<br>
+    > *and like this, escape of the restricted seccomp to dump the flag via his child*<br>
+
+</details>
+
+<details>
+  <summary><strong>Windows challenges</strong></summary>
+
+  - **INTENT CTF 2022** --> PwnMe
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/INTENT.CTF.2022/pwn/PwnME)
+    > *simple buffer overflow, we do a little ROP that makes stack executable via a call to `VirtualProtect()`*<br>
+    > *then we jump to a simple windows shellcode that calls cmd.exe*<br>
 
 </details>
 
