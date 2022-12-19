@@ -62,7 +62,7 @@ well the way I exploit it (and it seems it is the intended way), is to trace the
 
 we attach to the child, than we use ptrace POKEDATA function to modify it's code, and patch the program memory of child.<br>
 
-as the program as no PIE, we know were are the child instruction in memory.<br>
+as the program as no PIE, we know where are the child instructions in memory.<br>
 
 if you look at child code disassembly, you can see that the end of his loop, the `sleep()` calls, is followed by a `jmp` instruction that will go to the start of the loop.<br>
 
