@@ -4,7 +4,7 @@
 
 L'idée du challenge étant de faire un shellcode pouvant se lire dans les deux sens (comme un palindrome donc..)
 
-et devant néammoins s'exécuter correctement..
+et devant néanmoins s'exécuter correctement..
 
 
 
