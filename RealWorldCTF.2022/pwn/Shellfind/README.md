@@ -28,7 +28,7 @@ We found a buffer overflow in the function `sub_400F50()`, a function that it ca
 
 ![](https://github.com/nobodyisnobody/write-ups/raw/main/RealWorldCTF.2022/pwn/Shellfind/pics/reverse.png)
 
-the function does not check for size of passed base64 string, and decode them directyly in a buffer on stack..
+the function does not check for size of passed base64 string, and decode them directly in a buffer on stack..
 
 as we can send a packet of up to 0x800 bytes, we can easily overflow these two buffers.
 
