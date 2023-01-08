@@ -333,7 +333,7 @@ or alone to practice..(Team --> Armitage)
   - **NahamCon EU CTF 2022** --> Limited resources
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/NahamCon.EU.CTF.2022/pwn/limited_resources)
     > *challenge where a parent process trace a child process to modify his code via `PTRACE_POKEDATA`*<br>
-    > *and like this, escape of the restricted seccomp to dump the flag via his child*<br>
+    > *and like this, escape of the restricted seccomp to dump the flag via child*<br>
 
 </details>
 
@@ -368,6 +368,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2021/pwn/orxw)
     > *interesting challenge where a parent can only write, and a child process can only open and read*<br>
     > *stdin,stdout,stderr are closed, so we use time to extract flag content by testing each char, and blocking when right guess*<br>
+
+  - **RealWorld CTF 2022** --> Shellfind
+    * [quick write-up](https://github.com/nobodyisnobody/write-ups/tree/main/RealWorldCTF.2022/pwn/Shellfind)
+    > *exploiting a 0 day in a DLINK DCS-960L camera, via a buffer overflow in an udp service*<br>
 
 </details>
 
