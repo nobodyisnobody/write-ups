@@ -6,7 +6,7 @@ it had only 6 solves at the end of the CTF, and was a difficult one, who took me
 
 The goal is to exploit a buffer overflow in an udp service on a *dlink DCS-960L* camera.
 
-The vulnerability is a 0 day, that was unknown as the time of the CTF, and unpatched in the last firmware at the time of this writing.
+The vulnerability is a 0 day, that was unknown at the time of the CTF, and unpatched in the last firmware at the time of this writing.
 
 The author of the challenge told me later, that it is a service only exploitable from the internal lan.
 
@@ -50,7 +50,7 @@ so I did two shellcodes:
 
 one, to list files via `getdents` and export the result via the already opened udp socket..to locate the flag on the remote filesystem
 
-another one, to exfiltrate it via the openened udp port too..
+another one, to exfiltrate the flag file via the openened udp port too..
 
 and that's all
 
