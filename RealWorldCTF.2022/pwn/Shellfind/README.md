@@ -50,7 +50,7 @@ so I did two shellcodes:
 
 + one, to list files via `getdents` and export the result via the already opened udp socket..to locate the flag on the remote filesystem
 
-+ another one, to exfiltrate the flag file via the openened udp port too..
++ another one, to exfiltrate the flag file via the opened udp socket too..
 
 and that's all
 
