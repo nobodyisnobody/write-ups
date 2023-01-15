@@ -222,6 +222,10 @@ or alone to practice..(Team --> Armitage)
     > *then overwrite exit got entry with _start, then overwrite atoi with printf for leaks*<br>
     > *then overwrite atoi() with system() for code execution*<br>
 
+  - **idekCTF 2022** --> relativity
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/idekCTF.2022/pwn/relativity)
+    > *format string on heap with only two `%n` allowed, need bruteforce...only solve script *<br>
+
 </details>
 
 <details>
