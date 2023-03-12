@@ -1,3 +1,5 @@
+------
+
 ## Write-ups INDEX
 
 Various Write-ups from various CTFs..
@@ -11,7 +13,7 @@ or alone to practice..(Team --> Armitage)
 <details>
   <summary><strong>Heap Challenges</strong></summary>
 
-  ### libc 2.35
+### libc 2.35
 
   - **0CTF TCTF 2022** --> babyheap
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/0CTF.TCTF.2022/pwn/babyheap)
@@ -23,7 +25,7 @@ or alone to practice..(Team --> Armitage)
     > *double free in fastbin, then overwrite libc strlen got entry with system() address*<br>
     > *code execution when calling puts() function (that calls strlen...)*<br>
 
-  ### libc 2.34
+### libc 2.34
 
   - **MetaCTF 2021** --> hookless
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/MetaCtf.2021/pwn/Hookless)
@@ -31,14 +33,14 @@ or alone to practice..(Team --> Armitage)
     > *House of Botcake attack, we overwrite IO_2_1_stdout with environ address to leak stack address*<br>
     > *we write a ROP directly on stack to achieve code execution*<br>
 
-  ### libc 2.32
+### libc 2.32
 
   - **vsCTF 2022** --> EZorange
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/vsCTF.2022/pwn/ezorange)
     > *oob read/write in edit function, no free available, use same method than house of orange to free chunks*<br>
     > *we free two chunks, then do tcache poisonning with the oob, and overwrite __malloc_hook*<br>
 
-  ### libc 2.31
+### libc 2.31
 
   - **justCTF 2022** --> notes
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2022/pwn/notes)
@@ -67,14 +69,14 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor)
     > *double free vulnerability and uaf, then allocation on __free_hook*<br>
 
-  ### libc 2.29
+### libc 2.29
 
   - **GDG Algiers CTF 2022** --> Notes Keeper
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/GDG.Algiers.CTF.2022/pwn/Notes.keeper)
     > *use null byte overflow to make 0x118 chunk goes to tcache 0x20 size when freed*<br>
     > *the do fastbin dup attack, to finally overwrite __free_hook*<br>
     
-  ### libc 2.27
+### libc 2.27
 
   - **RaR CTF 2021** --> unintended
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/RaRCTF.2021/pwn/unintended)
@@ -88,8 +90,8 @@ or alone to practice..(Team --> Armitage)
   - **HSCTF 8 CTF 2021** --> Use after freedom
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/use_after_freedom)
     > *unsorted bin attack, overwrite global_max_fast, then overwrite __free_hook*<br>
- 
-  ### libc 2.25
+
+### libc 2.25
   - **Tamil CTF 2021*** --> Vuln Storage
     * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/Tamil.CTF.2021/pwn/Vuln.Storage/)
 
@@ -131,6 +133,7 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/PBjar.CTF.2021/pwn/Imdeghost)
     > *restricted shellcode, resolved via connect back flag exfiltration done in sigrop*<br>
     
+
 </details>
 
 <details>
@@ -150,6 +153,7 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/RPG)
     > *heap overflow in FILE structure, then we use FSOP read/write to overwrite __free_hook*<br>
     
+
 </details>
 
 <details>
@@ -276,6 +280,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/nullcon.HackIM.2022/pwn/typical.ROP)
     > *simple riscv gets buffer overflow exploitation challenge*<br>
 
+  - **UTCTF 2023** --> Bing Chilling    (loongarch64)
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/UTCTF.2023/pwn/Bing.Chilling)
+    > *simple loongarch64 gets buffer overflow exploitation challenge*<br>
+
 </details>
 
 <details>
@@ -324,6 +332,12 @@ or alone to practice..(Team --> Armitage)
     > *escape a brainfuck recompiler, via an oob read/write underflow on heap, then do heap exploitation via brainfuck (crazy)*<br>
     > *then we get code execution by overwriting libc GOT entries of strlen and memcpy, and causing a malloc error*<br>
     > *the malloc error will launch __libc_message() function that will call strlen and memcpy*<br>
+
+  - **UTCTF 2023** --> UTCTF Sandbox
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/UTCTF.2023/pwn/UTCTF.Sandbox/)
+    > *escape a unicorn sandbox, via vulnerabilities in syscall emulation*<br>
+    > *we exploit first program running in guest, to get code execution via ROP*<br>
+    > *then we exploit syscall emulation vulnerabilities in host loader, to leak host addresses, and execute an execve syscall*<br>
 
 </details>
 
@@ -379,3 +393,8 @@ or alone to practice..(Team --> Armitage)
 
 </details>
 
+---
+
+you find my work usefull? well you can tip me here to support it.. I will drink to you ! (probably not coffee) 
+
+<a href="https://www.buymeacoffee.com/nobodyisnobody"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer amigo&emoji=🍺&slug=nobodyisnobody&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
