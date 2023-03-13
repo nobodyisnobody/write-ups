@@ -139,7 +139,7 @@ and in another terminal you launch:
 
 we have setup a breakpoint at address 0x120000570 it is the end of the main function, the return instruction as you can see in the picture above.
 
-![gdb](./pics/gdb.png)
+![gdb](./pics/gdb.gif)
 
 ok, after this is standard gdb debugging, I will not make a tutorial on gdb debugging, you can find a lot on internet..
 
