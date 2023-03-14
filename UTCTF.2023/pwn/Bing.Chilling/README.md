@@ -66,6 +66,7 @@ the resulting gdb binary, will be at `/opt/gdb/bin/loongarch64-unknown-linux-gnu
 + we could need a bit of docs too:
 
   [https://blog.xen0n.name/en/posts/tinkering/loongarch-faq/](https://blog.xen0n.name/en/posts/tinkering/loongarch-faq/)
+  [https://loongson.github.io/LoongArch-Documentation/LoongArch-Vol1-EN.html](https://loongson.github.io/LoongArch-Documentation/LoongArch-Vol1-EN.html)
 
 you can find other docs around.
 
