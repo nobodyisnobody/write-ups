@@ -284,6 +284,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/UTCTF.2023/pwn/Bing.Chilling)
     > *simple loongarch64 gets buffer overflow exploitation challenge*<br>
 
+  - **Hack-A-Sat 4 Qualifiers 2023** --> Smash Babdy & Drop baby    (riscv32)
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Hack-A-Sat.4.Qualifiers/pwn/)
+    > *smash baby is a buffer overflow, and drop baby an overflow needed to be ROP, on riscv32*<br>
+
 </details>
 
 <details>
