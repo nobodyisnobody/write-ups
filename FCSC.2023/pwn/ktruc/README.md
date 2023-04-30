@@ -290,7 +290,7 @@ with `lx-lsmod` you can list loaded modules, with their loading addresses, with 
 If you like luxury (because you deserve it..) the next step will be to install the kernel sources, you can download them like this:
 
 ```sh
-git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/kinetic
+git clone git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/kinetic
 mv kinetic linux-5.19.0
 cd linux-5.19.0
 git tag -l Ubuntu-*    # to list available sub-versions
