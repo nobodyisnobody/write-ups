@@ -276,7 +276,7 @@ You can dump actual kernel mappings with pt, search strings in it, and many more
 You should also extract gdb scripts from kernel .ddeb package like this:
 
 ```sh
-dpkg --fsys-tarfile linux-image-unsigned-5.19.0-35-generic-dbgsym_5.19.0-35.36_amd64.ddeb | tar xf - ./usr/lib/debug/boot/vmlinux-5.19.0-35-generic --strip-components 7
+dpkg --fsys-tarfile linux-image-unsigned-5.19.0-35-generic-dbgsym_5.19.0-35.36_amd64.ddeb | tar xf - ./usr/share/gdb/auto-load/boot/vmlinux-5.19.0-35-generic --strip-components 7
 ```
 
 you will get a file named `vmlinuz-5.19.0-35-generic-gdb.py` and a subdirectory `scripts/`
