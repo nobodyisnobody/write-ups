@@ -114,6 +114,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/UTCTF.2022/pwn/bloat)
     > *use write primitive in kernel module, to overwrite modprobe_path*<br>
 
+  - **FCSC 2023** --> ktruc
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2023/pwn/ktruc)
+    > *kernel exploitation on recent ubuntu 5.19 kernel, use write primitive in kernel module, to overwrite modprobe_path*<br>
+
 </details>
 
 </details>
@@ -186,6 +190,10 @@ or alone to practice..(Team --> Armitage)
   - **KITCTFCTF 2022** --> movsh
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/KITCTFCTF.2022/pwn/movsh)
     > *shellcode composed only of mov and 2 syscalls only, with seccomp that only allow open,read,write,exit syscalls*<br>
+
+  - **FCSC 2023** --> keskidi
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2023/pwn/keskidi)
+    > *shellcode where a child leak parent accessible only flag.txt via a random temporary file modified by parent*<br>
 
 </details>
 
