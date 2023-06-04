@@ -1,8 +1,10 @@
+------
+
 ## Write-ups INDEX
 
 Various Write-ups from various CTFs..
 
-as a Pwner for various team (Water Paddler, RootMeUpBeforeYouGoGo, etc...)
+as a Pwner for various team (Blue Water, Water Paddler, RootMeUpBeforeYouGoGo, etc...)
 
 or alone to practice..(Team --> Armitage)
 
@@ -71,6 +73,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/DigitalOverdose.2021/pwn/flavor)
     > *double free vulnerability and uaf, then allocation on __free_hook*<br>
 
+  - **justCTF 2023** --> Nucleus
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2023/pwn/Nucleus)
+    > * overwrite __free_hook via tcache poisonning attack  *<br>
+
 ### libc 2.29
 
   - **GDG Algiers CTF 2022** --> Notes Keeper
@@ -93,6 +99,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/HSCTF.8.CTF.2021/use_after_freedom)
     > *unsorted bin attack, overwrite global_max_fast, then overwrite __free_hook*<br>
 
+  - **justCTF 2023** --> Welcome in my house
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2023/pwn/Welcome.in.my.house)
+    > * classic house of force challenge, overwrite another chunk on heap by "turning around" the memory address space  *<br>
+
 ### libc 2.25
   - **Tamil CTF 2021*** --> Vuln Storage
     * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/Tamil.CTF.2021/pwn/Vuln.Storage/)
@@ -106,6 +116,11 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/imaginary.CTF.2022/pwn/rope)
     > *code execution via overwriting* `_rtld_global+3848` *, that is* `__rtld_lock_lock_recursive (GL(dl_load_lock))`<br>
     > *and pivoting in *`_rtld_global`* , via *`gets()`* and setcontext gadget* <br>
+
+  - **DanteCTF 2023** --> Sentence To Hell
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/DanteCTF.2023/pwn/Sentence.To.Hell)
+    > *code execution via overwriting* `l->l_info[DT_FINI_ARRAY]` *, to make it point to a forge `_fini_array` entry pointing to a onegadget*<br>
+    > *challenge on libc 2.35 from Ubuntu 22.04* <br>
 
 </details>
 
@@ -405,6 +420,12 @@ or alone to practice..(Team --> Armitage)
     * [quick write-up](https://github.com/nobodyisnobody/write-ups/tree/main/RealWorldCTF.2022/pwn/Shellfind)
     > *exploiting a 0 day in a DLINK DCS-960L camera, via a buffer overflow in an udp service*<br>
 
+  - **justCTF 2023** --> Tic Tac PWN!
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/justCTF.2023/pwn/tic-tac-PWN)
+    > * interesting challenge, where we can call libc functions via a rpc server, that can call a dynamic library imported functions (tic tac toe game) *<br>
+    > * but we can pass only 32bits values to functions, and cannot map memory zone in the low 32bits of address space, nor use returned functions results  *<br>
+    > * we mmap a shellcode written in a temp file as rwx, and we finally use `on_exit()` libc function to have code execution at exits (very trikcy one..) *<br>
+    
 </details>
 
 ---
