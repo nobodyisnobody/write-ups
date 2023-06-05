@@ -14,11 +14,11 @@ on obtient un beau crash, qu'on va inspecter sous gdb:
 
 ![overflow](./pics/overflow.png)
 
-On peut voir que la valeur `1` à été écrite sur l'addresse de retour, dans RIP donc.
+On peut voir que la valeur `1` à été écrite sur l'adresse de retour, dans RIP donc.
 
 Et que les autres valeurs 2,3,4,etc... sont sur la pile.
 
-Les protections du binarie étant minimes (pas de PIE notamment):
+Les protections du binaire étant minimes (pas de PIE notamment):
 
 ```sh
 checksec calculatrice
@@ -36,7 +36,7 @@ Il y avait un "intended" (concept signifiant que vous devez faire les choses d'u
 
 pour ma part je suis allé vers le plus simple et rapide.
 
-J'ai utilisé un add gadget, afiin de transformer l'addresse libc de `stderr` stockée dans la `.bss` pour la transformer en l'addresse d'un one gadget, que j'ai exécuté.
+J'ai utilisé un `add gadget`, afin de transformer l'adresse libc de `stderr` stockée dans la `.bss` pour la transformer en l'adresse d'un `one gadget`, que j'ai exécuté.
 
 voici l'exploit en question:
 
