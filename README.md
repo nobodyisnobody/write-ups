@@ -1,5 +1,3 @@
-------
-
 ## Write-ups INDEX
 
 Various Write-ups from various CTFs..
@@ -287,6 +285,11 @@ or alone to practice..(Team --> Armitage)
   - **SunshineCTF 2022** --> [RII] Magic the GatheRIIng
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/SunshineCTF.2022/pwn/Magic.the.GatheRIIng/)
     > *oob write on stack, leak, then onegadget..*<br>
+
+  - **404 CTF 2023** --> Calculatrice
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/404CTF.2023/pwn/Calculatrice)
+    > *overflow in recursive processing of multiplication in a calculator application*<br>
+    > *little ROP, that transform `stderr` libc address on `.bss`  in a onegadget *<br>
 
 </details>
 
