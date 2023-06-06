@@ -191,6 +191,6 @@ p.interactive()
 
 you like to see fancy chars moving on screen?
 
-![gotshell](/BIGRAID/backup/work.challenges/work/mon.github/write-ups/DanteCTF.2023/pwn/Sentence.To.Hell/pics/gotshell.gif)
+![gotshell](./pics/gotshell.gif)
 
 so it's finished, see you in the next world. *nobodyisnobody still learning..*
