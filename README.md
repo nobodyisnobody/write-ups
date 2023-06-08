@@ -133,6 +133,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2023/pwn/ktruc)
     > *kernel exploitation on recent ubuntu 5.19 kernel, use write primitive in kernel module, to overwrite modprobe_path*<br>
 
+  - **OffensiveCon 2023** --> Blue Frost Security , bfsmatrix challenge
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Blue.Frost.Security.challenges/bfsmatrix)
+    > *kernel exploitation on 6.0.15, an UAF on linked list matrix*<br>
+
 </details>
 
 </details>
@@ -429,6 +433,7 @@ or alone to practice..(Team --> Armitage)
     > * but we can pass only 32bits values to functions, and cannot map memory zone in the low 32bits of address space, nor use returned functions results  *<br>
     > * we mmap a shellcode written in a temp file as rwx, and we finally use `on_exit()` libc function to have code execution at exits (very trikcy one..) *<br>
     
+
 </details>
 
 ---
@@ -436,3 +441,5 @@ or alone to practice..(Team --> Armitage)
 you find my work usefull? well you can tip me here to support it.. I will drink to you ! (probably not coffee) 
 
 <a href="https://www.buymeacoffee.com/nobodyisnobody"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer amigo&emoji=🍺&slug=nobodyisnobody&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+
+![bender1](./pics/bender1.gif)
