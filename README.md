@@ -432,7 +432,12 @@ or alone to practice..(Team --> Armitage)
     > * interesting challenge, where we can call libc functions via a rpc server, that can call a dynamic library imported functions (tic tac toe game) *<br>
     > * but we can pass only 32bits values to functions, and cannot map memory zone in the low 32bits of address space, nor use returned functions results  *<br>
     > * we mmap a shellcode written in a temp file as rwx, and we finally use `on_exit()` libc function to have code execution at exits (very trikcy one..) *<br>
-    
+
+  - **Codegate CTF 2023** --> sea
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Codegate.CTF.2023.quals/pwn/sea)
+    > * interesting challenge, we can aes encrypt and decrypt data, we can overflow aes sboxes to zero them and leak the random key *<br>
+    > * some signed and unsigned trick in padding to leak data on stack, and an overflow in encrypt function.. *<br>
+   
 
 </details>
 
