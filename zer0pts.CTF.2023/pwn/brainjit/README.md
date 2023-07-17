@@ -163,7 +163,7 @@ Now let's have a look to the vulnerability I used for the exploitation, it's in 
 
 the **'['** brainfuck instruction indicates the starting of a loop, and the **']'** instruction indicates the end of the loop.
 
-The JIT compiler use a  `jumps` python array ,  working like a `fifo`.
+The JIT compiler use a  `jumps` python array ,  working like a `lifo` type of stack.
 
 when a **'['** instruction is met, the code does:
 
@@ -221,7 +221,7 @@ pwn disasm -c 'amd64' ff4981e80000000000
    3:    e8 xx xx xx xx           call   (offset length)
 ```
 
-that's perfect for us, that means that the `length` variable will be the offset of the `call` instruction, and that we can jump to somewhere farther in our memory zone, to reach a shellcode for example, that we could put in the data zone (which is RWX as we said before).
+that's perfect for us, that means that the `length` variable will be the offset of the `call` instruction, and that we can jump to somewhere further in our memory zone, to reach a shellcode for example, that we could put in the data zone (which is RWX as we said before).
 
 The only requirement is that `rcx` points to a writable zone in memory, to pass the `dec    DWORD PTR [rcx-0x7f]` instruction.
 
