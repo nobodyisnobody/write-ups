@@ -56,7 +56,7 @@ it's in the `maria_mmio_read`and `maria_mmio_write` functions,  that are called 
 
 basically you can transfer memory between a provided memory buffer, and the driver internal buffer defined in `MariaState` structure which has a fixed size of 0x2000 bytes.
 
-You can define the address of your memory buffer, and the offset in the MariaState->buff[] from which the driver will read or write.
+You can define the address of your memory buffer, and the offset in the `MariaState->buff[]` from which the driver will read or write.
 
 If you look at `maria_mmio_read`function for example:
 
@@ -113,7 +113,11 @@ The qemu run with the sandbox, so we can not use execve, so we will use `open` ,
 
 The author of the challenge (and my teammate too..), use a call to `mprotect` to map the buffer `RWX`, and a jump to a shellcode to dump the flag..
 
-For changing a bit , I will use a gadget to pivot stack on `rdi`pointed memory, and will dump the flag with a small ROP payload.
+For changing a bit , I will use a gadget to pivot stack on `rdi`pointed memory, and will dump the flag with a small ROP payload. In fact it pivot on `rax` which contains  the same value than `rdi`, as it is used to populate `rdi`before calling...
+
+```c
+gadget = progbase + 0x0000000000b1088a; /* push rax ; pop rsp ; mov eax, 1 ; pop rbp ; ret */
+```
 
 Here is the exploit to do that:
 
