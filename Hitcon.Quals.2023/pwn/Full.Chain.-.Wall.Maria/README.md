@@ -83,7 +83,7 @@ static uint64_t maria_mmio_read(void *opaque, hwaddr addr, unsigned size) {
 }
 ```
 
-The problem is that the read size if fixed to `BUFF_SIZE` (0x2000 bytes), so if you increased the offset, you will have an oob read to the structure just next our buffer: `MemoryRegion mmio`
+The problem is that the read size is fixed to `BUFF_SIZE` (0x2000 bytes), so if you increased the offset, you will have an oob read to the structure just next our buffer: `MemoryRegion mmio`
 
 The offset is an unsigned byte so we will at maximum have an oob read or write of 0xff bytes, but as the buffer need to be 0x10 aligned, in practice we will use an offset of `0xf0`.
 
