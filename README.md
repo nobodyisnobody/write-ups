@@ -300,6 +300,11 @@ or alone to practice..(Team --> Armitage)
     > *overflow in recursive processing of multiplication in a calculator application*<br>
     > *little ROP, that transform `stderr` libc address on `.bss`  in a onegadget *<br>
 
+  - **Balsn CTF 2023** --> BabyPwn2023
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Balsn.CTF.2023/pwn/BabyPwn2023)
+    > *restricted ROP with few gadgets available*<br>
+    > *first ROP on .bss, then execute .puts to leave libc addresses on .bss, then reeuse stdout address to leak a libc address on .bss (stdout) *<br>
+
 </details>
 
 <details>
