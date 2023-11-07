@@ -125,6 +125,10 @@ or alone to practice..(Team --> Armitage)
     > *code execution via overwriting* `l->l_info[DT_FINI_ARRAY]` *, to make it point to a forge `_fini_array` entry pointing to a onegadget*<br>
     > *challenge on libc 2.35 from Ubuntu 22.04* <br>
 
+  - **LakeCTF Quals 2023** --> Not Malloc
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/LakeCTF.Quals.2023/pwn/not.malloc)
+    > *code execution by creating a fake dtor_list in tls-storage, then pivoting in tls-storage & execute a ROP there*<br>
+
 </details>
 
 <details>
@@ -461,7 +465,7 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Codegate.CTF.2023.quals/pwn/sea)
     > * interesting challenge, we can aes encrypt and decrypt data, we can overflow aes sboxes to zero them and leak the random key *<br>
     > * some signed and unsigned trick in padding to leak data on stack, and an overflow in encrypt function.. *<br>
-   
+
 
 </details>
 
