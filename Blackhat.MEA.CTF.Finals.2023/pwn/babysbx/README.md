@@ -80,7 +80,7 @@ you can see that many syscall are forbidden: `open, mmap, mprotect, munmap, prea
 
 `execve`is authorized, but only if the filename address points to the "/bin/id" string in the .rodata zone of the program:
 
-![authorized](/BIGRAID/backup/work.challenges/BlackHat.Mea.CTF.2023/pwn/2nd.day/babysbx/write-up/pics/authorized.png)
+![authorized](./pics/authorized.png)
 
 And because of PIE, that address will change at each runtime.
 
