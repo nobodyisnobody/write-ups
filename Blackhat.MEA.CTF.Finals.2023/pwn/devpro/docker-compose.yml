@@ -1,0 +1,10 @@
+version: '3'
+services:
+  dist_devpro:
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - "5000:5000"
+    privileged: true
+    restart: unless-stopped
+    build: .

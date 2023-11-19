@@ -1,3 +1,61 @@
+### Welcome friend 👋
+
+Here you will find, docs, write-ups, and other projects...
+
+from a long-time hacker, who started in the eighties.
+
+you remember the eighties maybe ? 
+
+At that time an angry monkey could throw barrels at you.
+
+![Capture d’écran_2023-06-05_08-26-16](./pics/donkeykong.gif)
+
+always hacking hardware, low-level stuff, with a preference for binary exploitation.
+
+if you want to ask questions or discuss, or propose me a job
+
+📫 You can contact me on discord --> nobodyisnobody#5709
+
+*nobodyisnobody, still hacking....*
+
+---
+## Articles & Docs INDEX
+
+* [Modern templates for shellcoding](https://github.com/nobodyisnobody/docs/tree/main/modern.templates.for.shellcoding)
+> python templates for developping, debugging, printing shellcodes
+
+
+* [Modern templates 2: A socks proxy shellcode ](https://github.com/nobodyisnobody/docs/tree/main/a.socks.proxy.shellcode)
+> a socks proxy shellcode (x64,arm,mips) to pivot on iot, and reach internal network
+
+* [Bash shellcode injection oneliner](https://github.com/nobodyisnobody/docs/tree/main/linux.tricks/Bash.shellcode.injection.oneliner)
+
+> A bash shell oneliner to inject a shellcode into bash process
+
+* [Code execution in recent libc with a write primitive](https://github.com/nobodyisnobody/docs/tree/main/code.execution.on.last.libc/) (work in progress...)
+
+> With the removal of the classic memory allocation hooks, 
+> an exploration of the various ways to achieve code execution with a write primitive in last libc,
+
+
+* [Using stdout as a read primitive](https://github.com/nobodyisnobody/docs/tree/main/using.stdout.as.a.read.primitive/)
+
+> An article on the technique of using stdout as a read primitive, as a companion to previous article on code execution
+> Focused on the practical aspects of these techniques, providing code examples & macros to reuse in exploits..
+
+
+
+## Tools INDEX
+
+* [Small Assembly Decompression Stubs](https://github.com/nobodyisnobody/tools/tree/main/Assembly.Decompression.Stubs)
+> Small Assembly decompression stubs for use in shellcode, or embedded systems,  rle, lz4, ZX0, lzma , on various architectures (work in progress)
+
+* [pwn2204, docker for a pwn setup based on ubuntu 22.04 and with bata24 gef fork](https://github.com/nobodyisnobody/tools/tree/main/pwn2204)
+> My own current setup for pwn task (userland & kernel) based on bata24 (wonderful) gef fork... (work in progress)
+
+* [pwn2304, docker for a pwn setup based on ubuntu 23.04 and with bata24 gef fork](https://github.com/nobodyisnobody/tools/tree/main/pwn2304)
+> My own current setup for pwn task (userland & kernel) based on bata24 (wonderful) gef fork... (work in progress)
+
 ------
 Dans une tentative un peu vaine d'organiser le chaos, de donner une forme toute temporaire à tout ça, 
 voici un index...
@@ -184,7 +242,10 @@ or alone to practice..(Team --> Armitage)
   - **FCSC 2022** --> RPG
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/FCSC.2022/pwn/RPG)
     > *heap overflow in FILE structure, then we use FSOP read/write to overwrite __free_hook*<br>
-    
+
+  - **Blackhat MEA CTF finals** --> devpro
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Blackhat.MEA.CTF.Finals.2023/pwn/devpro)
+    > *OOB read/write in FILE structure, then we use FSOP write to overwrite stdout, and we do a FSOP for code execution*<br>
 
 </details>
 
