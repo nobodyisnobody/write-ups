@@ -1,0 +1,8 @@
+version: '3'
+services:
+  dist_fortune:
+    build: .
+    ports:
+      - "5000:5000"
+    privileged: true
+    restart: unless-stopped
