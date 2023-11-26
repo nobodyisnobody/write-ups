@@ -189,6 +189,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Blackhat.MEA.CTF.Finals.2023/pwn/devpro)
     > *OOB read/write in FILE structure, then we use FSOP write to overwrite stdout, and we do a FSOP for code execution*<br>
 
+  - **GlacierCTF 2023** --> Write Byte Where
+    * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/GlacierCTF.2023/pwn/Write.Byte.Where)
+    > *one byte pwn challenge, solved with a write in stdin to expand buffer, and write over stdout for FSOP*<br>
+
 </details>
 
 <details>
