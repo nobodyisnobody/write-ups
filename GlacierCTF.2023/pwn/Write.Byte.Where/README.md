@@ -62,7 +62,7 @@ For example if we overwrite the second lsb of `_IO_buf_end`, to extend the buffe
 
 ![stdin3](./pics/stdin3.png)
 
-You can see that `_IO_buf_end` as been extended to `0x7fb2a1132764`, and that our string as overwrite the rest of `stdin` structure...You got the idea.
+You can see that `_IO_buf_end` as been extended to `0x7fb2a1132764`, and that our string has overwrite the rest of `stdin` structure...You got the idea.
 
 so to resume the process lets look at the succession of functions that we will use and abuse:
 
