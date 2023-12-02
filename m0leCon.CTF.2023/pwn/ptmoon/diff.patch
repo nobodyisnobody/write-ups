@@ -1,0 +1,34 @@
+--- qemu-8.1.1/hw/display/vmware_vga.c	2023-09-21 22:20:52.000000000 +0200
++++ qemu-8.1.1-patched/hw/display/vmware_vga.c	2023-11-24 14:36:53.919868312 +0100
+@@ -428,23 +428,23 @@
+     int line = h;
+     uint8_t *ptr[2];
+ 
+-    if (!vmsvga_verify_rect(surface, "vmsvga_copy_rect/src", x0, y0, w, h)) {
+-        return -1;
+-    }
+-    if (!vmsvga_verify_rect(surface, "vmsvga_copy_rect/dst", x1, y1, w, h)) {
+-        return -1;
+-    }
++    // if (!vmsvga_verify_rect(surface, "vmsvga_copy_rect/src", x0, y0, w, h)) {
++    //     return -1;
++    // }
++    // if (!vmsvga_verify_rect(surface, "vmsvga_copy_rect/dst", x1, y1, w, h)) {
++    //     return -1;
++    // }
+ 
+     if (y1 > y0) {
+         ptr[0] = vram + bypp * x0 + bypl * (y0 + h - 1);
+         ptr[1] = vram + bypp * x1 + bypl * (y1 + h - 1);
+-        for (; line > 0; line --, ptr[0] -= bypl, ptr[1] -= bypl) {
++        for (; line >= 0; line --, ptr[0] -= bypl, ptr[1] -= bypl) {
+             memmove(ptr[1], ptr[0], width);
+         }
+     } else {
+         ptr[0] = vram + bypp * x0 + bypl * y0;
+         ptr[1] = vram + bypp * x1 + bypl * y1;
+-        for (; line > 0; line --, ptr[0] += bypl, ptr[1] += bypl) {
++        for (; line >= 0; line --, ptr[0] += bypl, ptr[1] += bypl) {
+             memmove(ptr[1], ptr[0], width);
+         }
+     }
