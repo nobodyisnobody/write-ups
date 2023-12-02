@@ -1,0 +1,10 @@
+version: '3.3'
+
+services:
+  speedrun:
+    build: .
+    ports:
+     - 4444:4444
+    #environment:
+    #  - FLAG=ptm{bellissimaflag}
+    restart: unless-stopped
