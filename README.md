@@ -409,6 +409,11 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Hitcon.Quals.2023/pwn/Full.Chain.-.Wall.Maria)
     > *a basic qemu escape challenge, via an oob read/write in a pci qemu driver*<br>
 
+  - **m0lecon CTF Finals 2023** --> Ptmoon
+    * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/m0leCon.CTF.2023/pwn/ptmoon/README.md)
+    > *an advanced qemu escape challenge, on qemu 8.1.1 running ubuntu 23.10*<br>
+    > *an oob read/write introduced in the vmware svga driver, and a code execution via writing a ROP in another thread stack*<br>
+
 </details>
 
 <details>
