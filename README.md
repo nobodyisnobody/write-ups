@@ -234,6 +234,10 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/tree/main/Blackhat.MEA.CTF.Finals.2023/pwn/babysbx)
     > *escaping from a seccomp very restricted shellcode, and remapping a read-only zone for changing only allowed binary*<br>
 
+  - **0CTF/TCTF 2023** --> Nothing is true
+    * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/0CTF.TCTF.2023/pwn/Nothing.is.True/README.md)
+    > *escaping from a seccomp very restricted with a 64 bit elf file, switching to 32bit and using sysenter *<br>
+
 </details>
 
 <details>
