@@ -372,3 +372,6 @@ flag{tak3_A_Leap_0f_Fa1th_mak3_s0ft_land1ng}
 Bye!
 ```
 
+and that's all !
+
+*nobodyisnobody still pwning things..*
