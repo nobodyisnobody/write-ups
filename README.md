@@ -1,4 +1,3 @@
-------
 Dans une tentative un peu vaine d'organiser le chaos, de donner une forme toute temporaire à tout ça, 
 voici un index...
 (-----
@@ -417,6 +416,11 @@ or alone to practice..(Team --> Armitage)
     * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/m0leCon.CTF.2023/pwn/ptmoon/README.md)
     > *an advanced qemu escape challenge, on qemu 8.1.1 running ubuntu 23.10*<br>
     > *an oob read/write introduced in the vmware svga driver, and a code execution via writing a ROP in another thread stack*<br>
+
+  - **bi0s CTF 2024** --> virtio-note
+    * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/bi0sCTF.2024/pwn/virtio-note/README.md)
+    > *an qemu escape challenge, on qemu 8.2.0*<br>
+    > *an oob read/write in a virtio backend driver, and a code execution via writing a shellcode in qemu RWX zone*<br>
 
 </details>
 
