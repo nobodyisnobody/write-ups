@@ -1,0 +1,77 @@
+MEMORY:7C00 loc_7C00:                               ; DATA XREF: MEMORY:7C29↓r
+MEMORY:7C00 aaa
+MEMORY:7C01 adc     si, [bx]
+MEMORY:7C03
+MEMORY:7C03 loc_7C03:                               ; DATA XREF: MEMORY:7C25↓r
+MEMORY:7C03 adc     ax, [bx+si]
+MEMORY:7C03 ; ---------------------------------------------------------------------------
+MEMORY:7C05 db    0
+MEMORY:7C06 db    0
+MEMORY:7C07 db    0
+MEMORY:7C08 byte_7C08 db 0                          ; DATA XREF: MEMORY:7C1F↓w
+MEMORY:7C08                                         ; MEMORY:7C4D↓r ...
+MEMORY:7C09 ; ---------------------------------------------------------------------------
+MEMORY:7C09 cli
+MEMORY:7C0A xor     ax, ax
+MEMORY:7C0C mov     ds, ax
+MEMORY:7C0E mov     es, ax
+MEMORY:7C10 mov     ss, ax
+MEMORY:7C12 mov     sp, 0FFFFh
+MEMORY:7C15 sti
+MEMORY:7C16
+MEMORY:7C16 loc_7C16:                               ; CODE XREF: MEMORY:7C2E↓j
+MEMORY:7C16                                         ; MEMORY:7C47↓j
+MEMORY:7C16 call    loc_7C32
+MEMORY:7C19 cmp     al, 1Bh
+MEMORY:7C1B jz      short loc_7C30
+MEMORY:7C1D sub     al, 30h ; '0'
+MEMORY:7C1F mov     byte_7C08, al
+MEMORY:7C22 call    loc_7C37
+MEMORY:7C25 mov     eax, dword ptr loc_7C03+1
+MEMORY:7C29 cmp     eax, dword ptr loc_7C00
+MEMORY:7C2E jnz     short loc_7C16
+MEMORY:7C30
+MEMORY:7C30 loc_7C30:                               ; CODE XREF: MEMORY:7C1B↑j
+MEMORY:7C30                                         ; MEMORY:loc_7C30↓j
+MEMORY:7C30 jmp     short loc_7C30
+MEMORY:7C32 ; ---------------------------------------------------------------------------
+MEMORY:7C32
+MEMORY:7C32 loc_7C32:                               ; CODE XREF: MEMORY:loc_7C16↑p
+MEMORY:7C32 mov     ah, 0
+MEMORY:7C34 int     16h                             ; KEYBOARD - READ CHAR FROM BUFFER, WAIT IF EMPTY
+MEMORY:7C34                                         ; Return: AH = scan code, AL = character
+MEMORY:7C36 retn
+MEMORY:7C37 ; ---------------------------------------------------------------------------
+MEMORY:7C37
+MEMORY:7C37 loc_7C37:                               ; CODE XREF: MEMORY:7C22↑p
+MEMORY:7C37                                         ; MEMORY:7C49↓j
+MEMORY:7C37 mov     ah, 0
+MEMORY:7C39 int     16h                             ; KEYBOARD - READ CHAR FROM BUFFER, WAIT IF EMPTY
+MEMORY:7C39                                         ; Return: AH = scan code, AL = character
+MEMORY:7C3B cmp     ah, 48h ; 'H'
+MEMORY:7C3E jz      short loc_7C4B
+MEMORY:7C40 cmp     ah, 50h ; 'P'
+MEMORY:7C43 jz      short loc_7C59
+MEMORY:7C45 cmp     al, 1Ch
+MEMORY:7C47 jz      short loc_7C16
+MEMORY:7C49 jmp     short loc_7C37
+MEMORY:7C4B ; ---------------------------------------------------------------------------
+MEMORY:7C4B
+MEMORY:7C4B loc_7C4B:                               ; CODE XREF: MEMORY:7C3E↑j
+MEMORY:7C4B xor     ah, ah
+MEMORY:7C4D mov     al, byte_7C08
+MEMORY:7C50 add     ax, 7C04h
+MEMORY:7C53 mov     bx, ax
+MEMORY:7C55 add     byte ptr [bx], 1
+MEMORY:7C58 retn
+MEMORY:7C59 ; ---------------------------------------------------------------------------
+MEMORY:7C59
+MEMORY:7C59 loc_7C59:                               ; CODE XREF: MEMORY:7C43↑j
+MEMORY:7C59 xor     ah, ah
+MEMORY:7C5B mov     al, byte_7C08
+MEMORY:7C5E add     ax, 7C04h
+MEMORY:7C61 mov     bx, ax
+MEMORY:7C63 sub     byte ptr [bx], 1
+MEMORY:7C66 retn
+MEMORY:7C66 ; ---------------------------------------------------------------------------
+MEMORY:7C67 db    0
