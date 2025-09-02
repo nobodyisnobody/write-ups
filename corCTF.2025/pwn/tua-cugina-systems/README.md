@@ -431,7 +431,7 @@ uid=0(root) gid=0(root)
 
 so it's finished?
 
-no it's not, we are noot, but we are still in the nsjail, and the flag is not in our chrooted filesystem,
+no it's not, we are root, but we are still in the nsjail, and the flag is not in our chrooted filesystem,
 
 but in the VM main filesystem, outside the jail... 
 
