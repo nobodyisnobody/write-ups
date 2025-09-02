@@ -422,6 +422,11 @@ or alone to practice..(Team --> Armitage)
     > *an qemu escape challenge, on qemu 8.2.0*<br>
     > *an oob read/write in a virtio backend driver, and a code execution via writing a shellcode in qemu RWX zone*<br>
 
+  - **cor CTF 2025** --> tua-cugina-systems
+    * [write-up](https://github.com/nobodyisnobody/write-ups/blob/main/corCTF.2025/pwn/tua-cugina-systems/README.md)
+    > *well, more nsjail escape in fact*<br>
+    > *various tricks to get code execution, privesc, then a nsjail escape,  worth to remember*<br>
+
 </details>
 
 <details>

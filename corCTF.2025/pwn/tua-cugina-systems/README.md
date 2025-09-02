@@ -125,7 +125,7 @@ But you know as always, **devil 😈 is in the details...**
 
 Ok, so we find an easy way to get privilege escalation, but first... how to execute our payload.
 
-The full file system is read-only, we can not create any files or directory.. To complicate things a but more, the VM has no access to internet, we can only access it via the ssh port.
+The full file system is read-only, we can not create any files or directory.. To complicate things a bit more, the VM has no access to internet, we can only access it via the ssh port.
 
 So how to execute a payload, shellcode, or binary?
 
@@ -277,7 +277,7 @@ ok we are progressing 🥵 , slowly, slowly..
 
 Ok so now, we are able to upload an elf executable binary, and execute it on the remote VM. That's good.
 
-So how can we inject a cusom shared library in the `tc` setuid binary, knowing that we can not write any files, anywhere in the VM.
+So how can we inject a custom shared library in the `tc` setuid binary, knowing that we can not write any files, anywhere in the VM.
 
 Well the solution is again `memfd_create()`. We can create a shared library fully mapped in memory without touching disk.
 
@@ -312,7 +312,7 @@ The shared library mapped in memory with `memfd_create()`will be accessible via 
 
 but wait.. there is a problem.
 
-The ̀get_exec_kind()` function will construct the path of shared lib like this:
+The `get_exec_kind()` function will construct the path of shared lib like this:
 
 ```c
 char buf[256];
